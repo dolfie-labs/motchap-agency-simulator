@@ -6,8 +6,8 @@
      <meta name="viewport" content="width=device-width,initial-scale=1">
      <meta name="color-scheme" content="dark">
      <meta name="description"
-          content="Mô phỏng Agency/Host Motchap: lương giờ độc lập, hoa hồng Host từ 50.000 KD, hoa hồng Agency từ 300.000 KD, thưởng 100.000đ mỗi Host đạt chuẩn. Hoạt động offline.">
-     <title>Motchap Agency | Mô phỏng nhiều Host tương tự S & A</title>
+          content="Mô phỏng Agency/Host Motchap theo bảng dịch vụ 28/10/2026: 4 gói Live 80/120 giờ, hoa hồng theo điều kiện và thưởng Agency từ 3 Host đạt chuẩn. Hoạt động offline.">
+     <title>Motchap Agency | Mô phỏng gói dịch vụ &amp; thu nhập</title>
      <style>
           :root {
                --bg: #0a0c15;
@@ -52,7 +52,8 @@
           }
 
           button:focus-visible,
-          input:focus-visible {
+          input:focus-visible,
+          summary:focus-visible {
                outline: 2px solid #cab4ff;
                outline-offset: 3px
           }
@@ -416,6 +417,103 @@
                gap: 15px
           }
 
+          .package-control {
+               min-width: 0;
+               padding: 0;
+               border: 0;
+               margin: 0 0 16px
+          }
+
+          .package-control legend {
+               font-size: 12px;
+               font-weight: 700;
+               padding: 0;
+               margin-bottom: 8px
+          }
+
+          .package-options {
+               display: grid;
+               grid-template-columns: repeat(2, minmax(0, 1fr));
+               gap: 8px
+          }
+
+          .package-option {
+               display: flex;
+               align-items: center;
+               gap: 9px;
+               min-width: 0;
+               padding: 11px;
+               border: 1px solid #555e7c;
+               border-radius: 9px;
+               background: var(--surface2);
+               color: var(--text);
+               cursor: pointer
+          }
+
+          .package-option:has(input:checked) {
+               border-color: var(--purple);
+               background: #b492ff16
+          }
+
+          .package-option input {
+               accent-color: var(--purple2);
+               width: 16px;
+               height: 16px;
+               margin: 0;
+               flex: 0 0 auto
+          }
+
+          .package-option strong {
+               display: block;
+               font-size: 12px
+          }
+
+          .package-option small {
+               display: block;
+               color: var(--muted);
+               font-size: 11px
+          }
+
+          .package-option small span {
+               display: inline-block
+          }
+
+          .policy-details {
+               border-top: 1px solid var(--stroke);
+               margin-top: 18px;
+               padding-top: 15px;
+               color: #bdc8dc;
+               font-size: 12px
+          }
+
+          .policy-details summary {
+               cursor: pointer;
+               color: var(--text);
+               font-weight: 750
+          }
+
+          .policy-details li {
+               margin: 8px 0
+          }
+
+          .table.policy-table th,
+          .table.policy-table td {
+               white-space: normal;
+               min-width: 0;
+               padding: 10px 8px
+          }
+
+          .policy-table th:not(:first-child),
+          .policy-table td:not(:first-child) {
+               min-width: 40px
+          }
+
+          .payroll-table .flagcell {
+               white-space: normal;
+               min-width: 180px;
+               text-align: left
+          }
+
           .slider-control.host-quantity {
                background: #b492ff0b;
                border: 1px solid #7661a33b;
@@ -525,38 +623,6 @@
                justify-content: space-between;
                color: #7e8aa2;
                font-size: 10px
-          }
-
-          .host-status {
-               border-top: 1px solid #3a425b;
-               margin-top: 15px;
-               padding-top: 13px
-          }
-
-          .flag {
-               font-size: 12px;
-               font-weight: 800;
-               display: flex;
-               gap: 7px;
-               align-items: center
-          }
-
-          .flag.ok {
-               color: var(--green)
-          }
-
-          .flag.mid {
-               color: var(--gold)
-          }
-
-          .flag.no {
-               color: var(--red)
-          }
-
-          .host-status .detail {
-               font-size: 11px;
-               color: #9eaac2;
-               margin-top: 4px
           }
 
           .host-costs {
@@ -868,6 +934,7 @@
           }
 
           .subsection {
+               min-width: 0;
                border: 1px solid #343a50;
                background: #1a2031;
                border-radius: 12px;
@@ -920,6 +987,7 @@
           }
 
           .constitem {
+               min-width: 0;
                border: 1px solid #3d445c;
                background: #ffffff05;
                border-radius: 10px;
@@ -936,7 +1004,8 @@
                display: block;
                margin-top: 5px;
                font-size: 17px;
-               font-variant-numeric: tabular-nums
+               font-variant-numeric: tabular-nums;
+               overflow-wrap: anywhere
           }
 
           .constitem strong.gold {
@@ -1039,6 +1108,10 @@
           }
 
           @media(max-width:580px) {
+               .package-options {
+                    grid-template-columns: 1fr
+               }
+
                .wrapper {
                     padding: 0 14px
                }
@@ -1072,6 +1145,14 @@
                     font-size: 18px
                }
 
+               .panel-title {
+                    flex-wrap: wrap
+               }
+
+               .panel-title > .pill {
+                    white-space: nowrap
+               }
+
                .stat {
                     padding: 15px
                }
@@ -1081,6 +1162,10 @@
                }
 
                .stats .stat.feature {
+                    grid-column: span 2
+               }
+
+               .stats .stat:last-child {
                     grid-column: span 2
                }
 
@@ -1102,6 +1187,16 @@
 
                .small-grid {
                     gap: 9px
+               }
+          }
+
+          @media(max-width:380px) {
+               .constgrid {
+                    grid-template-columns: 1fr
+               }
+
+               .panel-title {
+                    flex-wrap: wrap
                }
           }
 
@@ -1235,6 +1330,18 @@
                     color: #273247
                }
 
+               .payroll-table th,
+               .payroll-table td {
+                    font-size: 7px;
+                    padding: 5px 3px;
+                    white-space: normal;
+                    overflow-wrap: anywhere
+               }
+
+               .payroll-table .flagcell {
+                    min-width: 65px
+               }
+
                .table th,
                .table th:first-child,
                .table td:first-child,
@@ -1257,6 +1364,27 @@
                     grid-template-columns: 1fr 1fr
                }
 
+               .stat .detail strong,
+               .line-item.total strong,
+               .table .paycell,
+               .hintblock strong,
+               .policy-details summary,
+               .constitem small,
+               .constitem strong.gold,
+               .constitem strong.blue,
+               .mini-badge,
+               .pill,
+               .eyebrow,
+               .micro {
+                    color: #273247 !important
+               }
+
+               .pill,
+               .mini-badge {
+                    background: #f4f5f8;
+                    border-color: #cbd2df
+               }
+
                .stat .val {
                     overflow-wrap: anywhere
                }
@@ -1268,43 +1396,50 @@
      <header class="topbar">
           <div class="wrapper top-inner">
                <div class="brand">
-                    <!-- <div class="brand-icon" aria-hidden="true">M</div> -->
-                    <div><strong>MOTCHAP</strong><small>AGENCY EARNINGS SIMULATOR</small></div>
+                    <div><strong>MOTCHAP</strong><small>AGENCY EARNINGS SIMULATOR · 28/10/2026</small></div>
+               </div>
+               <div class="actions">
+                    <button type="button" class="btn ghost" id="resetBtn">Đặt lại</button>
+                    <button type="button" class="btn" id="copyBtn">Sao chép tóm tắt</button>
+                    <button type="button" class="btn" id="printBtn">In bảng kê</button>
+                    <button type="button" class="btn primary" id="exportBtn">Xuất CSV</button>
                </div>
           </div>
      </header>
      <main class="wrapper">
           <section class="intro">
-               <div class="eyebrow">Công cụ dành cho Agency</div>
-               <h1>Bảng thu nhập Agency &amp; Host</h1>
-               <p>Tạo các nhóm Host S/A có cùng hiệu suất; chọn số Host tương tự, giờ và KD quà bình quân mỗi người.
-                    Lương theo giờ và hoa hồng theo doanh số được tính <strong>độc lập</strong>. Chỉ Host đủ chuẩn mới
-                    đóng góp vào hoa hồng và thưởng quản lý Agency.</p>
-               <div class="pills"><span class="pill">1 KD = 20đ KPI</span><span class="pill neutral">Hoa hồng tính lũy
-                         tiến</span><span class="pill neutral">Hoa hồng Host từ 50.000 KD</span><span
-                         class="pill neutral">Hoa hồng Agency từ 300.000 KD</span><span class="pill neutral">Mặc định 1 Host A + 1 Host S</span><span class="pill neutral">Không hiển thị tài chính Dolfie</span>
+               <div class="eyebrow">Công cụ dành cho Agency · Bảng dịch vụ mới</div>
+               <h1>Mô phỏng thu nhập Agency &amp; Host</h1>
+               <p>Chọn gói Live 80/120 giờ cho từng nhóm Host A/S, nhập số giờ và GIFT mỗi người, rồi kiểm tra
+                    điều kiện nghiệm thu. Phí dịch vụ tính theo gói; hoa hồng Host chỉ phát sinh khi có chương trình
+                    riêng được xác nhận.</p>
+               <div class="pills">
+                    <span class="pill">4 gói dịch vụ Host</span>
+                    <span class="pill neutral">Thưởng Agency từ 3 Host đạt chuẩn</span>
+                    <span class="pill neutral">Hoa hồng Agency từ 300.000 KD hợp lệ</span>
+                    <span class="pill neutral">1 KD = 20đ phục vụ KPI</span>
                </div>
           </section>
           <section class="stats" aria-label="Tổng quan thu nhập Agency">
                <article class="stat feature">
                     <div class="label">Thu nhập Agency trong tháng</div>
                     <div class="val" id="topAgency">0đ</div>
-                    <div class="detail">Hoa hồng nhóm + thưởng số Host đạt chuẩn</div>
+                    <div class="detail">Hoa hồng nhóm + thưởng số Host khi đủ điều kiện</div>
                </article>
                <article class="stat">
                     <div class="label">Hoa hồng theo doanh số</div>
                     <div class="val" id="topComm">0đ</div>
-                    <div class="detail">Tính lũy tiến theo <strong>KD của Host đạt chuẩn</strong></div>
+                    <div class="detail">Lũy tiến trên <strong>KD hợp lệ từ Host đạt chuẩn</strong></div>
                </article>
                <article class="stat">
                     <div class="label">Thưởng theo số Host</div>
                     <div class="val" id="topFixed">0đ</div>
-                    <div class="detail">100.000đ cho mỗi Host đạt chuẩn · không yêu cầu đủ 3 Host</div>
+                    <div class="detail" id="bonusStatus">Cần ít nhất 3 Host đạt chuẩn trong cùng kỳ</div>
                </article>
                <article class="stat">
                     <div class="label">Host đạt chuẩn</div>
                     <div class="val" id="topEligible">0 / 2</div>
-                    <div class="detail">Tính theo giờ, GIFT và KPI từng hạng</div>
+                    <div class="detail">Đạt gói, hoạt động, Live, liên kết và dữ liệu GIFT hợp lệ</div>
                </article>
           </section>
           <section class="workspace" aria-label="Tùy chỉnh và tính thu nhập">
@@ -1313,19 +1448,21 @@
                          <div class="panel-title">
                               <div>
                                    <div class="micro">01 · Kịch bản</div>
-                                   <h2>Tùy chỉnh kịch bản</h2>
-                                   <p>Điều chỉnh số Host tương tự, giờ làm và KD quà trên mỗi Host.</p>
-                              </div><span class="pill neutral" id="hostCountLabel">2 Host</span>
+                                   <h2>Tùy chỉnh nhóm Host</h2>
+                                   <p>Mỗi người trong nhóm có cùng gói, hiệu suất và điều kiện xác nhận.</p>
+                              </div>
+                              <span class="pill neutral" id="hostCountLabel">2 Host</span>
                          </div>
-                         <div class="adders"><button type="button" class="btn add-s" id="addS">＋ Thêm nhóm Host
-                                   S</button><button type="button" class="btn add-a" id="addA">＋ Thêm nhóm Host
-                                   A</button></div>
+                         <div class="adders">
+                              <button type="button" class="btn add-s" id="addS">＋ Thêm nhóm Host S</button>
+                              <button type="button" class="btn add-a" id="addA">＋ Thêm nhóm Host A</button>
+                         </div>
                          <div id="hostList" class="hostlist" aria-live="off"></div>
-                         <div class="hintblock"><strong>Hai khoản thu nhập độc lập:</strong> <strong>Lương cứng</strong>
-                              chỉ có khi đủ giờ tối thiểu của hạng. <strong>Hoa hồng Host</strong> bắt đầu khi GIFT đạt
-                              <strong>50.000 KD</strong>, kể cả khi chưa đủ giờ/KPI. <strong>Host đạt chuẩn</strong> chỉ
-                              khi đồng thời đủ giờ và KPI KD/giờ; Host không đạt vẫn có thể nhận hoa hồng riêng nhưng
-                              <strong>không được tính vào doanh số thưởng Agency</strong>.
+                         <div class="hintblock">
+                              <strong>Giả định mô phỏng:</strong> Các nhóm mẫu mặc định đã được xác nhận hoạt động,
+                              Live, liên kết và GIFT hợp lệ.
+                              <strong>Hoa hồng Host mặc định tắt.</strong> Chỉ nhập giờ Live và KD sau khi loại dữ liệu
+                              không hợp lệ. Mỗi Host chỉ thuộc một nhóm và một Agency trong kỳ.
                          </div>
                     </div>
                </div>
@@ -1335,42 +1472,39 @@
                               <div>
                                    <div class="micro">02 · Agency dashboard</div>
                                    <h2>Chi tiết thu nhập Agency</h2>
-                                   <p>Tính theo số Host thực tế và doanh số nhân theo số lượng ở mỗi nhóm.</p>
-                              </div><span class="mini-badge">1 Agency</span>
+                                   <p>Hai điều kiện được xét riêng: doanh số nhóm và số Host đạt chuẩn.</p>
+                              </div>
+                              <span class="mini-badge">1 Agency</span>
                          </div>
                          <div class="total-hero">
-                              <div class="mini">Tổng tiền Agency được nhận</div>
+                              <div class="mini">Thu nhập Agency tạm tính</div>
                               <div class="big" id="agencyTotal">0đ</div>
-                              <p>Hoa hồng mở từ 300.000 KD nhóm đủ chuẩn; thưởng 100.000đ/Host đạt chuẩn tính riêng.</p>
+                              <p>Hoa hồng từ 300.000 KD hợp lệ; thưởng 100.000đ/người khi có ít nhất 3 Host đạt chuẩn.</p>
                          </div>
                          <div class="agency-break">
-                              <div class="line-item"><span>Hoa hồng bậc 3% (mở từ 300.000 KD)</span><strong
-                                        id="agTier0">0đ</strong></div>
-                              <div class="line-item"><span>Hoa hồng bậc 4%</span><strong id="agTier1">0đ</strong></div>
-                              <div class="line-item"><span>Hoa hồng bậc 5%</span><strong id="agTier2">0đ</strong></div>
-                              <div class="line-item total"><span>Tổng hoa hồng nhóm</span><strong
-                                        id="agencyCommission">0đ</strong></div>
-                              <div class="line-item"><span>Thưởng A = 100.000đ × Host đạt chuẩn</span><strong
-                                        id="agencyFixed">0đ</strong></div>
+                              <div class="line-item"><span>Hoa hồng 3% · đến 1.800.000 KD</span><strong id="agTier0">0đ</strong></div>
+                              <div class="line-item"><span>Hoa hồng 4% · phần vượt đến 4.000.000 KD</span><strong id="agTier1">0đ</strong></div>
+                              <div class="line-item"><span>Hoa hồng 5% · phần vượt 4.000.000 KD</span><strong id="agTier2">0đ</strong></div>
+                              <div class="line-item total"><span>Tổng hoa hồng nhóm</span><strong id="agencyCommission">0đ</strong></div>
+                              <div class="line-item"><span>Thưởng số Host · kích hoạt từ 3 người</span><strong id="agencyFixed">0đ</strong></div>
                          </div>
                          <div class="rule"></div>
                          <div class="small-grid">
-                              <div class="small-box"><small>Tổng GIFT toàn đội</small><b id="agencyAllGift">0 KD</b>
-                              </div>
-                              <div class="small-box"><small>GIFT Host đạt chuẩn</small><b id="qualifiedKD">0 KD</b>
-                              </div>
-                              <div class="small-box"><small>KPI doanh số Agency</small><b id="agencyKPI">0đ</b></div>
+                              <div class="small-box"><small>GIFT nhập toàn đội</small><b id="agencyAllGift">0 KD</b></div>
+                              <div class="small-box"><small>KD hợp lệ từ Host đạt chuẩn</small><b id="qualifiedKD">0 KD</b></div>
+                              <div class="small-box"><small>Giá trị doanh số phục vụ KPI</small><b id="agencyKPI">0đ</b></div>
                               <div class="small-box"><small>Host S đạt chuẩn</small><b id="eligibleS">0</b></div>
                               <div class="small-box"><small>Host A đạt chuẩn</small><b id="eligibleA">0</b></div>
+                              <div class="small-box"><small>Điều kiện thưởng số Host</small><b id="bonusEligibility">Chưa kích hoạt</b></div>
                          </div>
                          <div class="progress-note">
-                              <div id="nextStep">Hoa hồng Agency chỉ mở khi GIFT đủ chuẩn đạt 300.000 KD.</div>
-                              <div class="progress"><span id="progressFill" style="width:0%"></span></div><small
-                                   id="thresholdNote">Mốc mở hoa hồng Agency: 300.000 KD</small>
+                              <div id="nextStep"></div>
+                              <div class="progress"><span id="progressFill" style="width:0%"></span></div>
+                              <small id="thresholdNote">Mốc mở hoa hồng Agency: 300.000 KD</small>
                          </div>
-                         <p class="policy-tip">GIFT của Host chưa đạt chuẩn không cộng vào doanh số Agency, dù Host đó
-                              vẫn được hưởng hoa hồng riêng khi đạt 50.000 KD. Thưởng quản lý trả 100.000đ/Host đạt
-                              chuẩn từ người đầu tiên, độc lập mốc mở hoa hồng 300.000 KD.</p>
+                         <p class="policy-tip">Agency có 1–2 Host đạt chuẩn vẫn có hoa hồng nhóm nếu đủ doanh số,
+                              nhưng chưa có thưởng số Host. Khi đủ 3 người, thưởng tính cho toàn bộ Host đạt chuẩn
+                              trong kỳ. GIFT của Host chưa đạt chuẩn không cộng vào doanh số nhóm.</p>
                     </div>
                </aside>
           </section>
@@ -1379,45 +1513,34 @@
                     <div class="panel-title">
                          <div>
                               <div class="micro">03 · Bảng kê chi tiết</div>
-                              <h2>Bảng lương từng Host</h2>
-                              <p>Mỗi hàng là nhóm Host có cùng giờ và KD/người; hiển thị cả thu nhập/người và tổng nhóm.
-                              </p>
-                         </div><span class="pill neutral" id="payrollTotal">0đ toàn nhóm</span>
+                              <h2>Phí dịch vụ &amp; hoa hồng Host</h2>
+                              <p>Phí gói và hoa hồng hiển thị theo người; tổng nhóm nhân với số Host tương tự.</p>
+                         </div>
+                         <span class="pill neutral" id="payrollTotal">0đ toàn nhóm</span>
                     </div>
                     <div class="table-wrap" style="margin-top:19px">
-                         <table class="table">
+                         <table class="table payroll-table">
                               <thead>
                                    <tr>
-                                        <th>Nhóm Host</th>
-                                        <th>Hạng</th>
-                                        <th>Số Host</th>
-                                        <th>Giờ/người</th>
-                                        <th>KD/người</th>
-                                        <th>KD cả nhóm</th>
-                                        <th>KPI cần/người</th>
-                                        <th>Lương cứng/người</th>
-                                        <th>HH bậc 1/người</th>
-                                        <th>HH bậc 2/người</th>
-                                        <th>HH bậc 3/người</th>
-                                        <th>HH bậc 4/người</th>
-                                        <th>HH/người</th>
-                                        <th>Thu nhập/người</th>
-                                        <th>Tổng nhóm</th>
-                                        <th>Trạng thái</th>
+                                        <th>Nhóm Host</th><th>Hạng</th><th>Số Host</th><th>Gói/người</th>
+                                        <th>Giờ hợp lệ/người</th><th>KD nhập/người</th><th>KD tính Agency</th>
+                                        <th>Phí gói/người</th><th>Phí đủ điều kiện/người</th><th>Chương trình HH</th>
+                                        <th>Tỷ lệ HH</th><th>HH/người</th><th>Thu nhập/người</th><th>Tổng nhóm</th><th>Trạng thái</th>
                                    </tr>
                               </thead>
                               <tbody id="hostRows"></tbody>
                          </table>
                     </div>
-                    <p class="table-note">Các cột HH bậc 1–4 dùng mốc 200.000 / 500.000 / 1.000.000 KD. <strong>Chỉ mở
-                              hoa hồng khi ≥50.000 KD</strong> (khi mở, tính lũy tiến trên toàn bộ KD từ 0). Hoa hồng
-                         Host <strong>không yêu cầu đủ giờ</strong>; tình trạng “đạt chuẩn” chỉ quyết định việc có được
-                         Agency tính KD/thưởng quản lý hay không.</p>
+                    <p class="table-note">Hoa hồng Host tham chiếu = tỷ lệ của dải doanh số × (20đ × toàn bộ KD hợp lệ).
+                         Chỉ tính khi đã xác nhận chương trình riêng và có ít nhất 50.000 KD hợp lệ.
+                         Phí gói chỉ ghi nhận đầy đủ khi đủ giờ gói, đạt tiêu chí hoạt động/nội dung và Live hợp lệ.
+                         Khi chưa đủ nghiệm thu, phí đủ điều kiện tạm tính 0đ; bảng chưa mô phỏng chi trả một phần
+                         hoặc điều khoản bổ sung của hợp đồng.</p>
                     <div class="small-grid" style="margin-top:17px">
-                         <div class="small-box"><small>Tổng lương cứng Host</small><b id="totalFixedHost">0đ</b></div>
-                         <div class="small-box"><small>Tổng hoa hồng Host</small><b id="totalHostComm">0đ</b></div>
-                         <div class="small-box"><small>Tổng lương toàn đội Host</small><b id="totalHostPay">0đ</b></div>
-                         <div class="small-box"><small>Tổng GIFT toàn bộ phòng</small><b id="allGift">0 KD</b></div>
+                         <div class="small-box"><small>Tổng phí gói đủ điều kiện</small><b id="totalFixedHost">0đ</b></div>
+                         <div class="small-box"><small>Tổng hoa hồng Host tham chiếu</small><b id="totalHostComm">0đ</b></div>
+                         <div class="small-box"><small>Tổng thu nhập Host tạm tính</small><b id="totalHostPay">0đ</b></div>
+                         <div class="small-box"><small>Tổng GIFT nhập toàn đội</small><b id="allGift">0 KD</b></div>
                     </div>
                </div>
           </section>
@@ -1425,215 +1548,487 @@
                <div class="panel-inner">
                     <div class="panel-title">
                          <div>
-                              <div class="micro">04 · Hằng số chính sách</div>
-                              <h2>Toàn bộ hằng số và công thức</h2>
-                              <p>Các thông số này được cố định trong bảng dành cho Agency, không có thanh điều chỉnh.
-                              </p>
-                         </div><span class="pill">20đ / KD KPI</span>
+                              <div class="micro">04 · Chính sách 28/10/2026</div>
+                              <h2>Gói dịch vụ &amp; quy tắc tính</h2>
+                              <p>Theo bảng gói hợp tác Agency &amp; Host; đối soát theo dữ liệu Motchap và thỏa thuận áp dụng.</p>
+                         </div>
+                         <span class="pill">20đ / KD KPI</span>
                     </div>
                     <div class="constgrid" style="margin:19px 0">
-                         <div class="constitem"><small>Giá quy đổi thưởng</small><strong>1 KD = 20đ</strong></div>
-                         <div class="constitem"><small>Lương Host S / giờ</small><strong class="gold">32.000đ</strong>
-                         </div>
-                         <div class="constitem"><small>Lương Host A / giờ</small><strong class="blue">26.000đ</strong>
-                         </div>
-                         <div class="constitem"><small>Giờ tối thiểu Host S</small><strong>80 giờ/tháng</strong></div>
-                         <div class="constitem"><small>Giờ tối thiểu Host A</small><strong>100 giờ/tháng</strong></div>
-                         <div class="constitem"><small>Thưởng Agency / Host chuẩn</small><strong>100.000đ/Host</strong>
-                         </div>
-                         <div class="constitem"><small>Mở hoa hồng Host</small><strong>50.000 KD</strong></div>
-                         <div class="constitem"><small>Mở hoa hồng Agency</small><strong>300.000 KD</strong></div>
-                         <div class="constitem"><small>KPI chuẩn Host S</small><strong>2.000 KD/giờ</strong></div>
-                         <div class="constitem"><small>KPI chuẩn Host A</small><strong>1.500 KD/giờ</strong></div>
+                         <div class="constitem"><small>Host A · 80 giờ</small><strong class="blue">1.600.000đ/gói</strong></div>
+                         <div class="constitem"><small>Host A · 120 giờ</small><strong class="blue">2.500.000đ/gói</strong></div>
+                         <div class="constitem"><small>Host S · 80 giờ</small><strong class="gold">2.000.000đ/gói</strong></div>
+                         <div class="constitem"><small>Host S · 120 giờ</small><strong class="gold">3.200.000đ/gói</strong></div>
+                         <div class="constitem"><small>Thưởng Agency · từ 3 Host đạt chuẩn</small><strong>100.000đ/Host</strong></div>
+                         <div class="constitem"><small>Mở hoa hồng nhóm</small><strong>300.000 KD hợp lệ</strong></div>
                     </div>
                     <div class="cols">
                          <div class="subsection">
-                              <h3>Bậc hoa hồng Host (lũy tiến)</h3>
+                              <h3>Hoa hồng Host · khi có chương trình riêng</h3>
                               <div class="table-wrap">
-                                   <table class="table">
-                                        <thead>
-                                             <tr>
-                                                  <th>Khoảng KD/quà</th>
-                                                  <th>Hạng S</th>
-                                                  <th>Hạng A</th>
-                                             </tr>
-                                        </thead>
+                                   <table class="table policy-table">
+                                        <thead><tr><th>Doanh số quà hợp lệ/tháng</th><th>Host A</th><th>Host S</th></tr></thead>
                                         <tbody>
-                                             <tr>
-                                                  <td>50.000 – 200.000 KD</td>
-                                                  <td>10%</td>
-                                                  <td>8%</td>
-                                             </tr>
-                                             <tr>
-                                                  <td>Trên 200.000 – 500.000</td>
-                                                  <td>14%</td>
-                                                  <td>12%</td>
-                                             </tr>
-                                             <tr>
-                                                  <td>Trên 500.000 – 1.000.000</td>
-                                                  <td>18%</td>
-                                                  <td>16%</td>
-                                             </tr>
-                                             <tr>
-                                                  <td>Trên 1.000.000 KD</td>
-                                                  <td>20%</td>
-                                                  <td>18%</td>
-                                             </tr>
+                                             <tr><td>50.000 – 200.000 KD</td><td>8%</td><td>10%</td></tr>
+                                             <tr><td>Trên 200.000 – 500.000 KD</td><td>12%</td><td>14%</td></tr>
+                                             <tr><td>Trên 500.000 – 1.000.000 KD</td><td>16%</td><td>18%</td></tr>
+                                             <tr><td>Trên 1.000.000 KD</td><td>18%</td><td>20%</td></tr>
                                         </tbody>
                                    </table>
                               </div>
-                              <p class="table-note"><strong>Dưới 50.000 KD: không có hoa hồng.</strong> Từ 50.000 KD:
-                                   kích hoạt hoa hồng trên <em>toàn bộ KD quà</em>, tỷ lệ tăng lũy tiến khi vượt các
-                                   bậc. KPI tối thiểu xét Host đạt chuẩn: S = 2.000 KD/giờ, A = 1.500 KD/giờ; KPI yêu
-                                   cầu = tổng giờ × KD/giờ.</p>
+                              <p class="table-note">Dưới 50.000 KD hoặc chưa xác nhận chương trình: chưa ghi nhận hoa hồng.
+                                   Công thức tham chiếu: X% × (20đ × G), với X theo dải doanh số và G là toàn bộ KD quà hợp lệ.
+                                   Điều kiện phát sinh và thanh toán phải được hai bên xác nhận riêng.</p>
                          </div>
                          <div class="subsection">
-                              <h3>Hoa hồng và thưởng Agency</h3>
+                              <h3>Hoa hồng lũy tiến &amp; thưởng Agency</h3>
                               <div class="table-wrap">
-                                   <table class="table">
-                                        <thead>
-                                             <tr>
-                                                  <th>Doanh số KD từ Host đạt chuẩn</th>
-                                                  <th>Tỷ lệ</th>
-                                             </tr>
-                                        </thead>
+                                   <table class="table policy-table">
+                                        <thead><tr><th>KD hợp lệ từ Host đạt chuẩn</th><th>Tỷ lệ</th></tr></thead>
                                         <tbody>
-                                             <tr>
-                                                  <td>300.000 – 1.800.000 KD</td>
-                                                  <td>3%</td>
-                                             </tr>
-                                             <tr>
-                                                  <td>Trên 1.800.000 – 4.000.000</td>
-                                                  <td>4%</td>
-                                             </tr>
-                                             <tr>
-                                                  <td>Trên 4.000.000 KD</td>
-                                                  <td>5%</td>
-                                             </tr>
+                                             <tr><td>Từ 300.000 đến 1.800.000 KD</td><td>3%</td></tr>
+                                             <tr><td>Phần vượt 1.800.000 đến 4.000.000 KD</td><td>4%</td></tr>
+                                             <tr><td>Phần vượt 4.000.000 KD</td><td>5%</td></tr>
                                         </tbody>
                                    </table>
                               </div>
-                              <p class="table-note">Nếu GIFT tính Agency <strong>dưới 300.000 KD: hoa hồng nhóm bằng
-                                        0đ</strong>. Đạt mốc 300.000 KD sẽ mở hoa hồng lũy tiến trên toàn bộ KD nhóm đủ
-                                   chuẩn. <strong>Thưởng A = 100.000đ × số Host đạt chuẩn</strong>, trả từ Host đầu
-                                   tiên, không phụ thuộc việc mở hoa hồng doanh số.</p>
+                              <p class="table-note">Dưới 300.000 KD hợp lệ: hoa hồng nhóm 0đ. Khi đạt ngưỡng, tính 3%
+                                   trên KD đến 1.800.000; 4% và 5% chỉ tính phần vượt mốc tương ứng, với giá trị KPI 20đ/KD.
+                                   Thưởng số Host = 100.000đ × N nếu N ≥ 3; N = 0–2 thì thưởng 0đ.</p>
                          </div>
                     </div>
-                    <div class="hintblock"><strong>Công thức chính sách:</strong> (1) Lương cứng Host = giờ × đơn giá
-                         <em>nếu đủ giờ tối thiểu</em>, ngược lại 0đ. (2) Hoa hồng Host chỉ phụ thuộc GIFT ≥50.000 KD,
-                         <em>không phụ thuộc số giờ hay đạt KPI</em>. (3) Host đạt chuẩn = đủ giờ tối thiểu
-                         <strong>và</strong> KD đạt KPI giờ. (4) Hoa hồng Agency chỉ tính nếu tổng KD của các Host đạt
-                         chuẩn ≥300.000 KD; thưởng cố định Agency = 100.000đ × số Host đạt chuẩn (không có yêu cầu 3
-                         Host). (5) Mọi bậc trả lũy tiến theo KD × 20đ/KD. Không dùng giờ đặc biệt hay Follow Room trong
-                         mô phỏng.
-                    </div>
+                    <div class="hintblock"><strong>Host đạt chuẩn:</strong> Hoàn thành thời lượng gói đã đăng ký,
+                         đạt tiêu chí hoạt động/nội dung đã xác nhận, có phiên Live thực chất, liên kết duy nhất với
+                         một Agency và có GIFT được hệ thống xác nhận hợp lệ. Không áp ngưỡng KD/giờ cố định.
+                         Số giờ vượt gói không tự làm tăng phí dịch vụ. Giá trị 1 KD = 20đ chỉ phục vụ KPI,
+                         không phải tỷ giá quy đổi tài sản ảo ra tiền mặt.</div>
+                    <details class="policy-details">
+                         <summary>Phạm vi phối hợp của Agency</summary>
+                         <ul>
+                              <li><strong>Tuyển chọn:</strong> Tìm kiếm, giới thiệu, sơ tuyển Host A/S; phối hợp đánh giá giọng nói và tương tác.</li>
+                              <li><strong>Hướng dẫn &amp; đào tạo:</strong> Tính năng phòng thoại, dẫn dắt nội dung, hồ sơ cá nhân và quy định cộng đồng.</li>
+                              <li><strong>Tổ chức hoạt động:</strong> Phối hợp kế hoạch với Host, duy trì phòng chất lượng; thống nhất trước phiên hỗ trợ ưu tiên.</li>
+                              <li><strong>Theo dõi chất lượng:</strong> Kiểm tra dữ liệu Live, nội dung, tương tác, mức hoàn thành gói; hỗ trợ khắc phục hoạt động không hợp lệ.</li>
+                              <li><strong>Phát triển đội nhóm:</strong> Duy trì Host, xây cộng đồng tích cực, hỗ trợ GIFT hợp lệ và đối soát sai lệch.</li>
+                         </ul>
+                    </details>
+                    <details class="policy-details">
+                         <summary>Yêu cầu phân hạng &amp; phối hợp với Host</summary>
+                         <ul>
+                              <li><strong>Host A:</strong> Giọng rõ, giao tiếp tốt, duy trì tương tác; chủ động giao lưu, đọc truyện, trò chuyện;
+                                   xây hồ sơ, cập nhật trang cá nhân và chia sẻ nội dung phù hợp; tương tác tích cực với cộng đồng.</li>
+                              <li><strong>Host S:</strong> Xét duyệt kỹ hơn về dẫn dắt, giọng nói và sáng tạo; phát triển chủ đề,
+                                   phong cách riêng, nội dung chất lượng; chủ động kết nối và hỗ trợ cộng đồng.</li>
+                              <li><strong>Lịch Live:</strong> Host tự chọn ngày, không bắt buộc mỗi ngày. Phiên hỗ trợ ưu tiên thống nhất trước từng kỳ.</li>
+                              <li><strong>Dữ liệu hợp lệ:</strong> Không ghi nhận treo máy, im lặng kéo dài, tài khoản giả, giao dịch giả/trùng lặp hoặc gian lận.</li>
+                              <li><strong>Đổi gói &amp; đối soát:</strong> Thay đổi hạng/gói và hiệu lực cần được xác nhận;
+                                   đối soát theo dữ liệu Motchap, có quyền yêu cầu kiểm tra sai lệch.</li>
+                         </ul>
+                    </details>
                </div>
           </section>
-          <footer class="footer">Dữ liệu chỉ được tính trên trình duyệt, không tải lên máy chủ và không cần kết nối
-               mạng. Mỗi nhóm Host được tính theo giả định tất cả thành viên làm cùng giờ và có cùng KD quà. Đây là
-               <strong>mô phỏng chính sách thưởng theo giả định của đơn vị vận hành</strong>; khi áp dụng trả công thực
-               tế, cần đối chiếu hợp đồng và quy định lao động hiện hành; quy tắc mô phỏng lương cứng bằng 0 khi thiếu
-               giờ chuẩn không thay thế nghĩa vụ trả tiền cho thời gian làm việc theo pháp luật nếu áp dụng. Hoa hồng
-               tính trên KPI nội bộ 20đ/KD, không phải tiền nạp thực tế của ứng dụng.
-          </footer>
+          <footer class="footer">Mô phỏng theo bảng dịch vụ ngày 28/10/2026. Dữ liệu chỉ tính trên trình duyệt,
+               không tải lên máy chủ và không cần kết nối mạng. Các lựa chọn xác nhận trong kịch bản là giả định,
+               không thay thế nghiệm thu thực tế. Phí gói, quyền lợi hoa hồng và chi trả cuối cùng theo thỏa thuận
+               cùng dữ liệu được Motchap xác nhận.</footer>
      </main>
      <div id="toast" class="toast" role="status" aria-live="polite"></div>
      <script>
           (() => {
                'use strict';
+               const POLICY_DATE = '28/10/2026';
                const KPI_VND = 20;
-               const RANKS = Object.freeze({ S: { hourly: 32000, minHours: 80, minKDHour: 2000, rates: [10, 14, 18, 20] }, A: { hourly: 26000, minHours: 100, minKDHour: 1500, rates: [8, 12, 16, 18] } });
+               const RANKS = {
+                    A: { packages: { 80: 1600000, 120: 2500000 }, rates: [8, 12, 16, 18] },
+                    S: { packages: { 80: 2000000, 120: 3200000 }, rates: [10, 14, 18, 20] }
+               };
                const HOST_MIN_COMMISSION_KD = 50000;
                const HOST_LIMITS = [200000, 500000, 1000000];
                const AGENCY_MIN_COMMISSION_KD = 300000;
-               const AGENCY_LIMITS = [1800000, 4000000], AGENCY_RATES = [3, 4, 5];
+               const AGENCY_LIMITS = [1800000, 4000000];
+               const AGENCY_RATES = [3, 4, 5];
                const AGENCY_PER_HOST = 100000;
-               const MAX_HOSTS = 40; // số nhóm cấu hình tối đa; mỗi nhóm có tối đa 100 Host tương tự
+               const AGENCY_MIN_HOSTS = 3;
+               const MAX_GROUPS = 40;
+               const FIELD_MAX = { count: 100, hours: 240, gifts: 3000000 };
+               const BOOLEAN_FIELDS = ['activityOK', 'liveValid', 'linked', 'giftValid', 'commissionProgram'];
                const $ = id => document.getElementById(id);
                const money = n => Math.round(n).toLocaleString('vi-VN') + 'đ';
                const numeric = n => Math.round(n).toLocaleString('vi-VN');
                const kd = n => numeric(n) + ' KD';
                const sum = arr => arr.reduce((x, y) => x + y, 0);
-               const tiers = (gifts, limits, rates) => { let lower = 0; return rates.map((rate, i) => { let upper = i < limits.length ? limits[i] : Infinity; let units = Math.max(0, Math.min(gifts, upper) - lower); lower = upper; return { units, rate, amount: units * KPI_VND * rate / 100 }; }); };
-               let hostCounter = { S: 0, A: 0 }; let hosts = []; let snapshot = null;
-               function newHost(rank) { const i = ++hostCounter[rank]; return { id: rank + String(i).padStart(2, '0'), rank, count: 1, hours: RANKS[rank].minHours, gifts: rank === 'S' ? 250000 : 200000 }; }
-               function defaults() { hostCounter = { S: 0, A: 0 }; hosts = [newHost('A'), newHost('S')]; }
-               function computeHost(host) { let r = RANKS[host.rank]; let hoursOK = host.hours >= r.minHours; let target = host.hours * r.minKDHour; let kpiOK = host.gifts >= target; let qualified = hoursOK && kpiOK && host.count > 0; let salesOK = host.gifts >= HOST_MIN_COMMISSION_KD; let base = hoursOK ? host.hours * r.hourly : 0; let parts = salesOK ? tiers(host.gifts, HOST_LIMITS, r.rates) : r.rates.map(rate => ({ units: 0, rate, amount: 0 })); let commission = sum(parts.map(t => t.amount)); let total = base + commission; return { ...host, hoursOK, kpiOK, qualified, salesOK, target, base, parts, commission, total, groupBase: base * host.count, groupCommission: commission * host.count, groupTotal: total * host.count, groupGifts: host.gifts * host.count, qualifiedCount: qualified ? host.count : 0 }; }
-               function compute() { const items = hosts.map(computeHost); const qualified = items.filter(x => x.qualified); const totalHosts = sum(items.map(x => x.count)); const qualifiedCount = sum(qualified.map(x => x.count)); const agencyGifts = sum(qualified.map(x => x.groupGifts)); const agencySalesOK = agencyGifts >= AGENCY_MIN_COMMISSION_KD; const agencyParts = agencySalesOK ? tiers(agencyGifts, AGENCY_LIMITS, AGENCY_RATES) : AGENCY_RATES.map(rate => ({ units: 0, rate, amount: 0 })); const agencyCommission = sum(agencyParts.map(t => t.amount)); const agencyFixed = qualifiedCount * AGENCY_PER_HOST; return { items, qualified, totalHosts, qualifiedCount, agencyGifts, agencySalesOK, agencyParts, agencyCommission, agencyFixed, agencyTotal: agencyCommission + agencyFixed, hostBase: sum(items.map(x => x.groupBase)), hostCommission: sum(items.map(x => x.groupCommission)), hostTotal: sum(items.map(x => x.groupTotal)), allGifts: sum(items.map(x => x.groupGifts)), qualifiedS: sum(qualified.filter(x => x.rank === 'S').map(x => x.count)), qualifiedA: sum(qualified.filter(x => x.rank === 'A').map(x => x.count)) }; }
-               const put = (id, content) => { const el = $(id); if (el) el.textContent = content; };
+               const put = (id, content) => { $(id).textContent = content; };
+               let hostCounter, hosts, snapshot, toastTimeout;
+
+               // Only Agency commission is progressive. Host commission uses X% × (20 × G), per the PDF.
+               function agencyTiers(gifts) {
+                    let lower = 0;
+                    return AGENCY_RATES.map((rate, i) => {
+                         const upper = AGENCY_LIMITS[i] ?? Infinity;
+                         const units = gifts >= AGENCY_MIN_COMMISSION_KD ? Math.max(0, Math.min(gifts, upper) - lower) : 0;
+                         lower = upper;
+                         return { units, rate, amount: units * KPI_VND * rate / 100 };
+                    });
+               }
+
+               function newHost(rank) {
+                    const id = rank + String(++hostCounter[rank]).padStart(2, '0');
+                    return {
+                         id, rank, count: 1, packageHours: 80, hours: 80, gifts: rank === 'S' ? 250000 : 200000,
+                         activityOK: true, liveValid: true, linked: true, giftValid: true, commissionProgram: false
+                    };
+               }
+
+               function defaults() {
+                    hostCounter = { S: 0, A: 0 };
+                    hosts = [newHost('A'), newHost('S')];
+               }
+
+               function computeHost(host) {
+                    const rank = RANKS[host.rank];
+                    const packageFee = rank.packages[host.packageHours];
+                    const hoursOK = host.hours >= host.packageHours;
+                    const serviceAccepted = hoursOK && host.activityOK && host.liveValid;
+                    const qualified = serviceAccepted && host.linked && host.giftValid;
+                    const base = serviceAccepted ? packageFee : 0;
+                    const salesOK = host.giftValid && host.gifts >= HOST_MIN_COMMISSION_KD;
+                    const band = HOST_LIMITS.findIndex(limit => host.gifts <= limit);
+                    const referenceRate = host.gifts >= HOST_MIN_COMMISSION_KD ? rank.rates[band === -1 ? 3 : band] : 0;
+                    const commissionEligible = host.commissionProgram && salesOK;
+                    const appliedRate = commissionEligible ? referenceRate : 0;
+                    const commission = host.gifts * KPI_VND * appliedRate / 100;
+                    const total = base + commission;
+                    const groupGifts = host.gifts * host.count;
+                    return {
+                         ...host, packageFee, hoursOK, serviceAccepted, qualified, salesOK,
+                         referenceRate, appliedRate, commissionEligible, base, commission, total,
+                         groupBase: base * host.count, groupCommission: commission * host.count,
+                         groupTotal: total * host.count, groupGifts,
+                         agencyGifts: qualified ? groupGifts : 0,
+                         qualifiedCount: qualified ? host.count : 0
+                    };
+               }
+
+               function compute() {
+                    const items = hosts.map(computeHost);
+                    const qualified = items.filter(x => x.qualified);
+                    const qualifiedCount = sum(qualified.map(x => x.count));
+                    const agencyGifts = sum(qualified.map(x => x.groupGifts));
+                    const agencyParts = agencyTiers(agencyGifts);
+                    const agencyCommission = sum(agencyParts.map(x => x.amount));
+                    const agencyBonusOK = qualifiedCount >= AGENCY_MIN_HOSTS;
+                    const agencyFixed = agencyBonusOK ? qualifiedCount * AGENCY_PER_HOST : 0;
+                    return {
+                         items, totalHosts: sum(items.map(x => x.count)), qualifiedCount,
+                         agencyGifts, agencyParts, agencyCommission, agencyBonusOK, agencyFixed,
+                         agencySalesOK: agencyGifts >= AGENCY_MIN_COMMISSION_KD,
+                         agencyTotal: agencyCommission + agencyFixed,
+                         hostBase: sum(items.map(x => x.groupBase)), hostCommission: sum(items.map(x => x.groupCommission)),
+                         hostTotal: sum(items.map(x => x.groupTotal)), allGifts: sum(items.map(x => x.groupGifts)),
+                         qualifiedS: sum(qualified.filter(x => x.rank === 'S').map(x => x.count)),
+                         qualifiedA: sum(qualified.filter(x => x.rank === 'A').map(x => x.count))
+                    };
+               }
+
                function status(x) {
-                    if (x.qualified) return { type: 'ok', label: 'Đạt chuẩn', explain: 'Đủ giờ + KPI; được tính lương cứng, hoa hồng cá nhân và doanh số Agency.' };
-                    if (!x.hoursOK && x.salesOK) return { type: 'mid', label: 'Chưa đạt · Có hoa hồng', explain: 'Thiếu ' + numeric(RANKS[x.rank].minHours - x.hours) + ' giờ; không có lương cứng, vẫn được hoa hồng ' + money(x.commission) + '. Không tính vào KPI Agency.' };
-                    if (!x.hoursOK) return { type: 'no', label: 'Chưa đạt · Chưa có thu nhập', explain: 'Chưa đủ giờ, chưa đạt 50.000 KD để mở hoa hồng. Thiếu ' + numeric(RANKS[x.rank].minHours - x.hours) + ' giờ.' };
-                    if (x.salesOK) return { type: 'mid', label: 'Chưa đạt KPI · Vẫn có lương & hoa hồng', explain: 'Đã đủ giờ nhưng còn thiếu ' + kd(Math.max(0, x.target - x.gifts)) + ' để được tính là Host đạt chuẩn. Hoa hồng cá nhân vẫn trả theo quà.' };
-                    return { type: 'mid', label: 'Chưa đạt KPI · Có lương cứng', explain: 'Đủ giờ nên có lương; cần ít nhất 50.000 KD để nhận hoa hồng và thêm ' + kd(Math.max(0, x.target - x.gifts)) + ' để đạt chuẩn.' };
+                    const missing = [];
+                    if (!x.hoursOK) missing.push('thiếu ' + numeric(x.packageHours - x.hours) + ' giờ của gói');
+                    if (!x.activityOK) missing.push('chưa xác nhận tiêu chí hoạt động/nội dung');
+                    if (!x.liveValid) missing.push('chưa xác nhận Live hợp lệ');
+                    if (!x.linked) missing.push('chưa xác nhận liên kết Agency duy nhất');
+                    if (!x.giftValid) missing.push('chưa xác nhận GIFT hợp lệ');
+                    const commissionNote = x.commissionEligible
+                         ? ' Hoa hồng tham chiếu: ' + money(x.commission) + '/người (' + x.appliedRate + '%).'
+                         : !x.commissionProgram ? ' Chưa áp dụng chương trình hoa hồng Host.'
+                         : !x.giftValid ? ' Chưa tính hoa hồng vì GIFT chưa được xác nhận.'
+                         : ' Chưa đủ 50.000 KD hợp lệ để tính hoa hồng Host.';
+                    if (x.qualified) return {
+                         type: 'ok', label: 'Đạt chuẩn Agency',
+                         explain: 'Đủ điều kiện phí gói ' + money(x.base) + '/người và ghi nhận doanh số Agency.' + commissionNote
+                    };
+                    return {
+                         type: x.total > 0 ? 'mid' : 'no', label: 'Chưa đạt chuẩn Agency',
+                         explain: missing.join('; ') + '. ' + (x.serviceAccepted
+                              ? 'Phí gói đủ điều kiện: ' + money(x.base) + '/người.'
+                              : 'Chưa ghi nhận đủ phí gói; tạm tính 0đ.') + commissionNote
+                    };
                }
-               function hostCard(h) { const r = RANKS[h.rank]; return `<article class="host-card ${h.rank.toLowerCase()}" data-host-id="${h.id}"><div class="host-top"><div class="host-title"><span class="rank-badge ${h.rank.toLowerCase()}">${h.rank}</span><span><strong>Host hạng ${h.rank} · ${h.id}</strong><small>${money(r.hourly)}/giờ · tối thiểu ${r.minHours} giờ · ${numeric(r.minKDHour)} KD/giờ</small></span></div><button class="btn danger" type="button" data-delete="${h.id}" aria-label="Xóa Host ${h.id}" title="Xóa Host này">✕</button></div><div class="sliders"><div class="slider-control host-quantity"><div class="ctrl-label"><label for="count-${h.id}">Số Host tương tự</label><div class="valuebox"><input type="number" data-host-number="${h.id}" data-kind="count" min="1" max="100" step="1" inputmode="numeric" value="${h.count}" aria-label="Số Host tương tự nhóm ${h.id}"><span>Host</span></div></div><input type="range" class="rangeslider" id="count-${h.id}" data-host-slider="${h.id}" data-kind="count" min="1" max="100" step="1" value="${h.count}" aria-label="Điều chỉnh số Host tương tự nhóm ${h.id}"><div class="range-ends"><span>1 Host</span><span>100 Host</span></div><p class="host-quantity-note">${h.count} người có cùng số giờ và KD/người bên dưới.</p></div><div class="slider-control"><div class="ctrl-label"><label for="hours-${h.id}">Số giờ làm trong tháng</label><div class="valuebox"><input type="number" data-host-number="${h.id}" data-kind="hours" min="0" max="240" step="1" inputmode="numeric" value="${h.hours}" aria-label="Giờ làm ${h.id}"><span>giờ</span></div></div><input type="range" class="rangeslider" id="hours-${h.id}" data-host-slider="${h.id}" data-kind="hours" min="0" max="240" step="1" value="${h.hours}" aria-label="Điều chỉnh giờ làm ${h.id}"><div class="range-ends"><span>0 giờ</span><span>240 giờ</span></div></div><div class="slider-control"><div class="ctrl-label"><label for="gifts-${h.id}">KD GIFT kiếm trong phòng</label><div class="valuebox"><input style="width:107px" type="number" data-host-number="${h.id}" data-kind="gifts" min="0" max="3000000" step="1000" inputmode="numeric" value="${h.gifts}" aria-label="Kim Diệp quà ${h.id}"><span>KD</span></div></div><input type="range" class="rangeslider" id="gifts-${h.id}" data-host-slider="${h.id}" data-kind="gifts" min="0" max="3000000" step="5000" value="${h.gifts}" aria-label="Điều chỉnh Kim Diệp của ${h.id}"><div class="range-ends"><span>0 KD</span><span>3.000.000 KD</span></div></div></div><div class="host-status"><div class="flag" data-flag="${h.id}"></div><div class="detail" data-explain="${h.id}"></div></div><div class="host-costs"><span>Thu nhập cả nhóm / tháng</span><strong data-payout="${h.id}">0đ</strong></div></article>`; }
-               function updateRange(range) { if (!range) return; let min = Number(range.min), max = Number(range.max); let pct = max > min ? (Number(range.value) - min) / (max - min) * 100 : 0; range.style.setProperty('--fill', Math.max(0, Math.min(100, pct)) + '%'); }
-               function renderHostList() { put('hostCountLabel', sum(hosts.map(h => h.count)) + ' Host · ' + hosts.length + ' nhóm'); $('addS').disabled = hosts.length >= MAX_HOSTS; $('addA').disabled = hosts.length >= MAX_HOSTS; $('hostList').innerHTML = hosts.length ? hosts.map(hostCard).join('') : '<div class="emptyhosts"><strong>Chưa có Host</strong>Dùng hai nút phía trên để thêm Host hạng S hoặc A.</div>'; document.querySelectorAll('[data-host-slider]').forEach(updateRange); refresh(); }
-               function updateCard(x) { const hostEl = document.querySelector(`[data-host-id="${x.id}"]`); if (!hostEl) return; let st = status(x), flag = hostEl.querySelector('[data-flag]'); flag.className = 'flag ' + st.type; flag.textContent = (st.type === 'ok' ? '✓ ' : st.type === 'no' ? '✕ ' : '! ') + st.label; hostEl.querySelector('[data-explain]').textContent = st.explain; hostEl.querySelector('[data-payout]').textContent = money(x.groupTotal); const p = hostEl.querySelector('.host-quantity-note'); if (p) p.textContent = `${numeric(x.count)} người cùng hiệu suất · ${money(x.total)}/người/tháng`; }
-               function renderPayroll(c) { let html = c.items.map(x => { let st = status(x); let badge = `<span class="mini-badge ${x.rank.toLowerCase()}">${x.rank}</span>`; let parts = x.parts.map(t => `<td class="${t.amount === 0 ? 'zero' : ''}">${money(t.amount)}</td>`).join(''); return `<tr><td><strong>Nhóm ${x.id}</strong></td><td>${badge}</td><td>${numeric(x.count)}</td><td>${numeric(x.hours)}h</td><td>${numeric(x.gifts)}</td><td>${numeric(x.groupGifts)}</td><td>${numeric(x.target)}</td><td>${money(x.base)}</td>${parts}<td>${money(x.commission)}</td><td>${money(x.total)}</td><td class="paycell">${money(x.groupTotal)}</td><td class="flagcell ${st.type}">${st.label}</td></tr>`; }).join(''); if (!html) html = '<tr><td colspan="16" style="text-align:center;padding:27px;color:#a0abc3">Chưa có Host. Hãy thêm nhóm Host S hoặc A.</td></tr>'; else html += `<tr class="totalrow"><td colspan="5">TỔNG NHÓM · ${c.totalHosts} Host (${c.qualifiedCount} đủ chuẩn)</td><td>${numeric(c.allGifts)}</td><td>—</td><td>${money(c.hostBase)}</td><td colspan="4">—</td><td>${money(c.hostCommission)}</td><td>—</td><td class="paycell">${money(c.hostTotal)}</td><td> </td></tr>`; $('hostRows').innerHTML = html; }
+
+               function numericControl(h, kind, label, unit) {
+                    const max = FIELD_MAX[kind];
+                    const min = kind === 'count' ? 1 : 0;
+                    return `<div class="slider-control ${kind === 'count' ? 'host-quantity' : ''}">
+                         <div class="ctrl-label"><label for="number-${kind}-${h.id}">${label}</label>
+                              <div class="valuebox"><input ${kind === 'gifts' ? 'style="width:107px"' : ''}
+                                   id="number-${kind}-${h.id}" type="number" data-host-number="${h.id}" data-kind="${kind}"
+                                   min="${min}" max="${max}" step="1" inputmode="numeric" value="${h[kind]}"><span>${unit}</span></div></div>
+                         <input type="range" class="rangeslider" data-host-slider="${h.id}" data-kind="${kind}"
+                              min="${min}" max="${max}" step="1" value="${h[kind]}" aria-label="${label} nhóm ${h.id}">
+                         <div class="range-ends"><span>${numeric(min)} ${unit}</span><span>${numeric(max)} ${unit}</span></div>
+                         ${kind === 'count' ? '<p class="host-quantity-note"></p>' : ''}</div>`;
+               }
+
+               function hostCard(h) {
+                    const rank = RANKS[h.rank];
+                    const options = Object.entries(rank.packages).map(([hours, fee]) =>
+                         `<label class="package-option" for="package-${h.id}-${hours}">
+                              <input type="radio" id="package-${h.id}-${hours}" name="package-${h.id}"
+                                   data-host-package="${h.id}" value="${hours}" ${Number(hours) === h.packageHours ? 'checked' : ''}>
+                              <span><strong>${hours} giờ</strong><small>${money(fee)}<span>/người/kỳ</span></small></span>
+                         </label>`).join('');
+                    return `<article class="host-card ${h.rank.toLowerCase()}" data-host-id="${h.id}">
+                         <div class="host-top"><div class="host-title"><span class="rank-badge ${h.rank.toLowerCase()}">${h.rank}</span>
+                              <span><strong>Nhóm Host ${h.rank} · ${h.id}</strong><small>Phí dịch vụ trọn gói · hoa hồng tối đa ${rank.rates[3]}% khi có chương trình</small></span></div>
+                              <button class="btn danger" type="button" data-delete="${h.id}" aria-label="Xóa nhóm ${h.id}" title="Xóa nhóm này">✕</button></div>
+                         <fieldset class="package-control"><legend>Gói Live đã đăng ký / người / tháng</legend>
+                              <div class="package-options">${options}</div></fieldset>
+                         <div class="sliders">
+                              ${numericControl(h, 'count', 'Số Host tương tự', 'Host')}
+                              ${numericControl(h, 'hours', 'Giờ Live hợp lệ / người', 'giờ')}
+                              ${numericControl(h, 'gifts', 'GIFT đã đối soát / người', 'KD')}
+                         </div>
+                         <div class="host-costs"><span>Thu nhập cả nhóm tạm tính / tháng</span><strong data-payout>0đ</strong></div>
+                    </article>`;
+               }
+
+               function updateRange(range) {
+                    const pct = (Number(range.value) - Number(range.min)) / (Number(range.max) - Number(range.min)) * 100;
+                    range.style.setProperty('--fill', Math.max(0, Math.min(100, pct)) + '%');
+               }
+
+               function renderHostList() {
+                    $('addS').disabled = hosts.length >= MAX_GROUPS;
+                    $('addA').disabled = hosts.length >= MAX_GROUPS;
+                    $('hostList').innerHTML = hosts.length ? hosts.map(hostCard).join('')
+                         : '<div class="emptyhosts"><strong>Chưa có Host</strong>Dùng nút phía trên để thêm nhóm Host S hoặc A.</div>';
+                    document.querySelectorAll('[data-host-slider]').forEach(updateRange);
+                    refresh();
+               }
+
+               function updateCard(x) {
+                    const el = document.querySelector(`[data-host-id="${x.id}"]`);
+                    el.querySelector('[data-payout]').textContent = money(x.groupTotal);
+                    el.querySelector('.host-quantity-note').textContent = `${numeric(x.count)} người cùng gói và điều kiện · ${money(x.total)}/người/tháng`;
+               }
+
+               function renderPayroll(c) {
+                    let html = c.items.map(x => {
+                         const st = status(x);
+                         return `<tr><td><strong>Nhóm ${x.id}</strong></td><td><span class="mini-badge ${x.rank.toLowerCase()}">${x.rank}</span></td>
+                              <td>${numeric(x.count)}</td><td>${x.packageHours}h</td><td>${numeric(x.hours)}h</td>
+                              <td>${numeric(x.gifts)}</td><td>${numeric(x.agencyGifts)}</td><td>${money(x.packageFee)}</td>
+                              <td>${money(x.base)}</td><td>${x.commissionProgram ? 'Đã xác nhận' : 'Chưa áp dụng'}</td>
+                              <td>${x.appliedRate}%</td><td>${money(x.commission)}</td><td>${money(x.total)}</td>
+                              <td class="paycell">${money(x.groupTotal)}</td><td class="flagcell ${st.type}" title="${st.explain}">${st.label}
+                              <small>${!x.hoursOK ? ' · Thiếu giờ gói' : !x.serviceAccepted ? ' · Chờ nghiệm thu' : !x.linked ? ' · Chờ liên kết' : !x.giftValid ? ' · Chờ xác nhận GIFT' : ''}</small></td></tr>`;
+                    }).join('');
+                    if (!html) html = '<tr><td colspan="15" style="text-align:center;padding:27px">Chưa có Host. Hãy thêm nhóm Host S hoặc A.</td></tr>';
+                    else html += `<tr class="totalrow"><td colspan="3">TỔNG · ${c.totalHosts} Host (${c.qualifiedCount} đạt chuẩn)</td>
+                         <td colspan="3">—</td><td>${numeric(c.agencyGifts)}</td><td>—</td><td>${money(c.hostBase)}</td>
+                         <td colspan="2">—</td><td>${money(c.hostCommission)}</td><td>—</td><td class="paycell">${money(c.hostTotal)}</td><td></td></tr>`;
+                    $('hostRows').innerHTML = html;
+               }
+
                function refresh() {
-                    const c = compute(); snapshot = c; for (const x of c.items) updateCard(x);
-                    put('topAgency', money(c.agencyTotal)); put('topComm', money(c.agencyCommission)); put('topFixed', money(c.agencyFixed)); put('topEligible', c.qualifiedCount + ' / ' + c.totalHosts);
-                    put('agencyTotal', money(c.agencyTotal)); put('agencyCommission', money(c.agencyCommission)); put('agencyFixed', money(c.agencyFixed)); for (let i = 0; i < 3; i++)put('agTier' + i, money(c.agencyParts[i].amount)); put('hostCountLabel', numeric(c.totalHosts) + ' Host · ' + c.items.length + ' nhóm'); put('agencyAllGift', kd(c.allGifts)); put('qualifiedKD', kd(c.agencyGifts)); put('agencyKPI', money(c.agencyGifts * KPI_VND)); put('eligibleS', c.qualifiedS); put('eligibleA', c.qualifiedA);
-                    put('payrollTotal', money(c.hostTotal) + ' toàn nhóm'); put('totalFixedHost', money(c.hostBase)); put('totalHostComm', money(c.hostCommission)); put('totalHostPay', money(c.hostTotal)); put('allGift', kd(c.allGifts));
-                    const remaining = Math.max(0, AGENCY_MIN_COMMISSION_KD - c.agencyGifts);
-                    let next;
-                    if (!c.qualifiedCount) next = '<b>Chưa có Host đạt chuẩn.</b> Cần đủ giờ + KPI theo hạng để Agency được cộng KD nhóm. Host chưa đạt vẫn có thể nhận hoa hồng cá nhân.';
-                    else if (!c.agencySalesOK) next = `<b>Thưởng quản lý: ${money(c.agencyFixed)}.</b> Cần thêm ${kd(remaining)} từ Host đạt chuẩn để mở hoa hồng Agency (mốc 300.000 KD).`;
-                    else next = `<b>Đã mở hoa hồng Agency.</b> Đang tính trên ${kd(c.agencyGifts)} từ ${c.qualifiedCount} Host đạt chuẩn, cộng ${money(c.agencyFixed)} thưởng quản lý.`;
-                    $('nextStep').innerHTML = next;
-                    let threshold, target, label;
-                    if (c.agencyGifts < AGENCY_MIN_COMMISSION_KD) { threshold = 0; target = AGENCY_MIN_COMMISSION_KD; label = 'Còn ' + kd(target - c.agencyGifts) + ' để mở hoa hồng Agency 3%'; }
-                    else if (c.agencyGifts < AGENCY_LIMITS[0]) { threshold = AGENCY_MIN_COMMISSION_KD; target = AGENCY_LIMITS[0]; label = 'Đã mở hoa hồng 3%; còn ' + kd(target - c.agencyGifts) + ' để lên phần vượt bậc 4%'; }
-                    else if (c.agencyGifts < AGENCY_LIMITS[1]) { threshold = AGENCY_LIMITS[0]; target = AGENCY_LIMITS[1]; label = 'Còn ' + kd(target - c.agencyGifts) + ' để lên phần vượt bậc 5%'; }
-                    else { threshold = AGENCY_LIMITS[1]; target = AGENCY_LIMITS[1]; label = 'Đã đến dải hoa hồng 5% cho phần vượt 4.000.000 KD'; }
-                    let percent = target === threshold ? 100 : Math.max(0, Math.min(100, (c.agencyGifts - threshold) / (target - threshold) * 100)); $('progressFill').style.width = percent + '%'; put('thresholdNote', label); renderPayroll(c);
+                    const c = compute();
+                    snapshot = c;
+                    c.items.forEach(updateCard);
+                    put('topAgency', money(c.agencyTotal)); put('topComm', money(c.agencyCommission));
+                    put('topFixed', money(c.agencyFixed)); put('topEligible', c.qualifiedCount + ' / ' + c.totalHosts);
+                    const missingHosts = Math.max(0, AGENCY_MIN_HOSTS - c.qualifiedCount);
+                    put('bonusStatus', c.agencyBonusOK ? `100.000đ × ${c.qualifiedCount} Host đạt chuẩn` : `Cần thêm ${missingHosts} Host đạt chuẩn để mở thưởng`);
+                    put('bonusEligibility', c.agencyBonusOK ? 'Đã kích hoạt' : c.qualifiedCount + ' / 3 Host');
+                    put('agencyTotal', money(c.agencyTotal)); put('agencyCommission', money(c.agencyCommission));
+                    put('agencyFixed', money(c.agencyFixed));
+                    c.agencyParts.forEach((part, i) => put('agTier' + i, money(part.amount)));
+                    put('hostCountLabel', numeric(c.totalHosts) + ' Host · ' + c.items.length + ' nhóm');
+                    put('agencyAllGift', kd(c.allGifts)); put('qualifiedKD', kd(c.agencyGifts));
+                    put('agencyKPI', money(c.agencyGifts * KPI_VND)); put('eligibleS', c.qualifiedS); put('eligibleA', c.qualifiedA);
+                    put('payrollTotal', money(c.hostTotal) + ' toàn nhóm'); put('totalFixedHost', money(c.hostBase));
+                    put('totalHostComm', money(c.hostCommission)); put('totalHostPay', money(c.hostTotal)); put('allGift', kd(c.allGifts));
+                    const salesNote = c.agencySalesOK ? `Đã mở hoa hồng nhóm trên ${kd(c.agencyGifts)} hợp lệ.`
+                         : `Cần thêm ${kd(AGENCY_MIN_COMMISSION_KD - c.agencyGifts)} từ Host đạt chuẩn để mở hoa hồng nhóm.`;
+                    const bonusNote = c.agencyBonusOK ? ` Thưởng số Host: ${money(c.agencyFixed)}.`
+                         : ` Chưa có thưởng số Host; cần thêm ${missingHosts} Host đạt chuẩn trong cùng kỳ.`;
+                    put('nextStep', salesNote + bonusNote);
+                    let lower = 0, target = AGENCY_MIN_COMMISSION_KD, label;
+                    if (!c.agencySalesOK) label = 'Mốc mở hoa hồng 3%: 300.000 KD';
+                    else if (c.agencyGifts < AGENCY_LIMITS[0]) {
+                         lower = AGENCY_MIN_COMMISSION_KD; target = AGENCY_LIMITS[0];
+                         label = 'Còn ' + kd(target - c.agencyGifts) + ' đến mốc phần vượt hưởng 4%';
+                    } else if (c.agencyGifts < AGENCY_LIMITS[1]) {
+                         lower = AGENCY_LIMITS[0]; target = AGENCY_LIMITS[1];
+                         label = 'Còn ' + kd(target - c.agencyGifts) + ' đến mốc phần vượt hưởng 5%';
+                    } else {
+                         lower = target = AGENCY_LIMITS[1]; label = 'Phần vượt 4.000.000 KD hưởng 5%';
+                    }
+                    const pct = target === lower ? 100 : Math.max(0, Math.min(100, (c.agencyGifts - lower) / (target - lower) * 100));
+                    $('progressFill').style.width = pct + '%';
+                    put('thresholdNote', label);
+                    renderPayroll(c);
                }
-               function addHost(rank) { if (hosts.length >= MAX_HOSTS) { notify('Tối đa ' + MAX_HOSTS + ' Host trong một kịch bản.'); return; } hosts.push(newHost(rank)); renderHostList(); document.querySelector(`[data-host-id="${hosts[hosts.length - 1].id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
-               function assignValue(input, mode) { const id = mode === 'slider' ? input.dataset.hostSlider : input.dataset.hostNumber; const kind = input.dataset.kind; const h = hosts.find(x => x.id === id); if (!h) return; if (mode === 'number' && input.value === '') return; let max = kind === 'count' ? 100 : kind === 'hours' ? 240 : 3000000; let value = Number(input.value); if (!Number.isFinite(value)) return; value = Math.max(kind === 'count' ? 1 : 0, Math.min(max, Math.round(value))); h[kind] = value; const card = input.closest('.host-card'); if (!card) return; const slider = card.querySelector(`[data-host-slider="${id}"][data-kind="${kind}"]`); const number = card.querySelector(`[data-host-number="${id}"][data-kind="${kind}"]`); if (slider) { slider.value = value; updateRange(slider) } if (number && number !== input) number.value = value; refresh(); }
-               $('hostList').addEventListener('input', e => { if (e.target.matches('[data-host-slider]')) assignValue(e.target, 'slider'); else if (e.target.matches('[data-host-number]')) assignValue(e.target, 'number'); });
-               $('hostList').addEventListener('change', e => { if (!e.target.matches('[data-host-number]')) return; const el = e.target; const id = el.dataset.hostNumber, h = hosts.find(x => x.id === id); if (!h) return; if (el.value === '') { el.value = el.dataset.kind === 'count' ? '1' : '0'; assignValue(el, 'number') } else el.value = h[el.dataset.kind]; });
-               $('hostList').addEventListener('click', e => { const del = e.target.closest('[data-delete]'); if (!del) return; hosts = hosts.filter(x => x.id !== del.dataset.delete); renderHostList(); });
-               $('addS').addEventListener('click', () => addHost('S')); $('addA').addEventListener('click', () => addHost('A'));
-               function reset() { defaults(); renderHostList(); notify('Đã khôi phục 1 Host A và 1 Host S (2 nhóm).'); } $('resetBtn')?.addEventListener('click', reset);
-               function csvEscape(v) { let s = typeof v === 'number' ? String(Math.round(v * 100) / 100) : String(v); return '"' + s.replaceAll('"', '""') + '"'; }
+
+               function addHost(rank) {
+                    if (!RANKS[rank]) return;
+                    if (hosts.length >= MAX_GROUPS) { notify('Tối đa ' + MAX_GROUPS + ' nhóm trong một kịch bản.'); return; }
+                    hosts.push(newHost(rank));
+                    renderHostList();
+                    document.querySelector(`[data-host-id="${hosts[hosts.length - 1].id}"]`).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+               }
+
+               function setValue(host, field, raw) {
+                    if (field in FIELD_MAX) {
+                         const value = Number(raw);
+                         if (!Number.isFinite(value)) return false;
+                         host[field] = Math.max(field === 'count' ? 1 : 0, Math.min(FIELD_MAX[field], Math.round(value)));
+                    } else if (field === 'packageHours' && [80, 120].includes(Number(raw))) host[field] = Number(raw);
+                    else if (BOOLEAN_FIELDS.includes(field) && typeof raw === 'boolean') host[field] = raw;
+                    else return false;
+                    return true;
+               }
+
+               function assignValue(input) {
+                    if (input.value === '') return;
+                    const id = input.dataset.hostNumber || input.dataset.hostSlider;
+                    const h = hosts.find(x => x.id === id);
+                    const field = input.dataset.kind;
+                    if (!h || !setValue(h, field, input.value)) return;
+                    const card = input.closest('.host-card');
+                    const number = card.querySelector(`[data-host-number][data-kind="${field}"]`);
+                    const slider = card.querySelector(`[data-host-slider][data-kind="${field}"]`);
+                    number.value = h[field]; slider.value = h[field]; updateRange(slider);
+                    refresh();
+               }
+
+               $('hostList').addEventListener('input', e => {
+                    if (e.target.matches('[data-host-number], [data-host-slider]')) assignValue(e.target);
+               });
+               $('hostList').addEventListener('change', e => {
+                    const input = e.target;
+                    if (input.matches('[data-host-number]') && input.value === '') {
+                         input.value = input.dataset.kind === 'count' ? '1' : '0'; assignValue(input);
+                    } else if (input.matches('[data-host-package]') && input.checked) {
+                         const host = hosts.find(x => x.id === input.dataset.hostPackage);
+                         if (host && setValue(host, 'packageHours', input.value)) refresh();
+                    }
+               });
+               $('hostList').addEventListener('click', e => {
+                    const del = e.target.closest('[data-delete]');
+                    if (!del) return;
+                    hosts = hosts.filter(x => x.id !== del.dataset.delete);
+                    renderHostList();
+               });
+               $('addS').addEventListener('click', () => addHost('S'));
+               $('addA').addEventListener('click', () => addHost('A'));
+               function reset() { defaults(); renderHostList(); notify('Đã đặt lại 1 Host A + 1 Host S, gói 80 giờ; hoa hồng Host tắt.'); }
+               $('resetBtn').addEventListener('click', reset);
+
+               function csvEscape(value) {
+                    const s = typeof value === 'number' ? String(Math.round(value * 100) / 100) : String(value);
+                    return '"' + s.replaceAll('"', '""') + '"';
+               }
+
                function csvRows() {
-                    const c = snapshot; const rows = [
-                         ['MOTCHAP AGENCY - BANG LUONG HOST S/A '], ['Gia KPI (VND/KD)', KPI_VND],
-                         ['Host S - luong/gio', RANKS.S.hourly], ['Host S - gio toi thieu', RANKS.S.minHours], ['Host S - KPI KD/gio', RANKS.S.minKDHour], ['Host S - hoa hong', RANKS.S.rates.join('/') + '%'],
-                         ['Host A - luong/gio', RANKS.A.hourly], ['Host A - gio toi thieu', RANKS.A.minHours], ['Host A - KPI KD/gio', RANKS.A.minKDHour], ['Host A - hoa hong', RANKS.A.rates.join('/') + '%'],
-                         ['Mo hoa hong Host (KD)', HOST_MIN_COMMISSION_KD], ['Moc luy tien Host (KD)', HOST_LIMITS.join(' / ')],
-                         ['Mo hoa hong Agency (KD)', AGENCY_MIN_COMMISSION_KD], ['Moc luy tien Agency (KD)', AGENCY_LIMITS.join(' / ')], ['Ty le Agency', AGENCY_RATES.join('/') + '%'],
-                         ['Thuong A / Host dat chuan', AGENCY_PER_HOST], [],
-                         ['BANG LUONG HOST'], ['Nhom Host', 'Hang', 'So Host tuong tu', 'Gio / nguoi', 'KD / nguoi', 'KD ca nhom', 'KPI yeu cau / nguoi', 'Du gio', 'Du 50000 KD', 'Dat KPI KD/gio', 'Nhom Host dat chuan', 'Luong cung / nguoi', 'HH bac 1 / nguoi', 'HH bac 2 / nguoi', 'HH bac 3 / nguoi', 'HH bac 4 / nguoi', 'Tong HH / nguoi', 'Tong thu nhap / nguoi', 'Luong cung ca nhom', 'HH ca nhom', 'Tong thu nhap ca nhom']
+                    const c = snapshot;
+                    const yesNo = value => value ? 'Có' : 'Không';
+                    const rows = [
+                         ['MOTCHAP - MÔ PHỎNG GÓI DỊCH VỤ AGENCY & HOST', POLICY_DATE],
+                         ['Giá trị phục vụ KPI (VND/KD)', KPI_VND],
+                         ['Host A - gói 80 giờ (VND)', RANKS.A.packages[80]], ['Host A - gói 120 giờ (VND)', RANKS.A.packages[120]],
+                         ['Host S - gói 80 giờ (VND)', RANKS.S.packages[80]], ['Host S - gói 120 giờ (VND)', RANKS.S.packages[120]],
+                         ['Ngưỡng hoa hồng Host (KD)', HOST_MIN_COMMISSION_KD], ['Mốc dải doanh số Host (KD)', HOST_LIMITS.join(' / ')],
+                         ['Tỷ lệ Host A', RANKS.A.rates.join('/') + '%'], ['Tỷ lệ Host S', RANKS.S.rates.join('/') + '%'],
+                         ['Hoa hồng Host tham chiếu', 'Khi đã xác nhận chương trình riêng: X% theo dải × 20 × toàn bộ KD hợp lệ'],
+                         ['Ngưỡng hoa hồng Agency (KD)', AGENCY_MIN_COMMISSION_KD], ['Mốc lũy tiến Agency (KD)', AGENCY_LIMITS.join(' / ')],
+                         ['Tỷ lệ Agency', AGENCY_RATES.join('/') + '%'], ['Số Host đạt chuẩn tối thiểu để mở thưởng', AGENCY_MIN_HOSTS],
+                         ['Thưởng mỗi Host khi đủ điều kiện (VND)', AGENCY_PER_HOST], [],
+                         ['BẢNG KÊ HOST'],
+                         ['Nhóm', 'Hạng', 'Số Host', 'Gói giờ/người', 'Phí gói/người', 'Giờ hợp lệ/người', 'KD nhập/người',
+                              'Đủ giờ gói', 'Đạt hoạt động/nội dung', 'Live hợp lệ', 'Liên kết Agency duy nhất', 'GIFT hợp lệ',
+                              'Đủ nghiệm thu gói', 'Host đạt chuẩn Agency', 'Chương trình HH đã xác nhận', 'Tỷ lệ HH áp dụng (%)',
+                              'Phí đủ điều kiện/người', 'HH tham chiếu/người', 'Thu nhập/người', 'KD nhập cả nhóm',
+                              'KD tính Agency', 'Phí đủ điều kiện cả nhóm', 'HH cả nhóm', 'Thu nhập cả nhóm']
                     ];
-                    for (const h of c.items) rows.push([h.id, h.rank, h.count, h.hours, h.gifts, h.groupGifts, h.target, h.hoursOK ? 'Co' : 'Khong', h.salesOK ? 'Co' : 'Khong', h.kpiOK ? 'Co' : 'Khong', h.qualified ? 'Co' : 'Khong', h.base, ...h.parts.map(t => t.amount), h.commission, h.total, h.groupBase, h.groupCommission, h.groupTotal]);
-                    rows.push(['TONG NHOM', '', '' + c.totalHosts, '', '', '' + c.allGifts, '', '', '', '', '', '', '', '', '', '', '', '', c.hostBase, c.hostCommission, c.hostTotal]);
-                    rows.push([], ['AGENCY'], ['Host dat chuan', c.qualifiedCount], ['Host S dat chuan', c.qualifiedS], ['Host A dat chuan', c.qualifiedA], ['Tong GIFT tat ca Host', c.allGifts], ['GIFT tinh cho Agency', c.agencyGifts], ['Doanh so KPI nhom (VND)', c.agencyGifts * KPI_VND], ['Da mo hoa hong Agency', c.agencySalesOK ? 'Co' : 'Khong'],
-                         ['Hoa hong Agency 3%', c.agencyParts[0].amount], ['Hoa hong Agency 4%', c.agencyParts[1].amount], ['Hoa hong Agency 5%', c.agencyParts[2].amount], ['Tong hoa hong Agency', c.agencyCommission], ['Thuong 100000 VND/Host dat chuan', c.agencyFixed], ['TONG TIEN AGENCY', c.agencyTotal], [],
-                         ['GHI CHU', 'Luong cung: du gio toi thieu. Hoa hong Host: tu 50000 KD bat ke gio/KPI. Dat chuan: du gio va KD/gio. Agency: 100000 VND moi Host chuan; hoa hong nhom chi khi >=300000 KD Host chuan. Khi mo HH, tinh luy tien tu KD dau tien. Chi la mo phong, khong phai phieu luong phap ly.']); return rows;
+                    for (const h of c.items) rows.push([
+                         h.id, h.rank, h.count, h.packageHours, h.packageFee, h.hours, h.gifts,
+                         yesNo(h.hoursOK), yesNo(h.activityOK), yesNo(h.liveValid), yesNo(h.linked), yesNo(h.giftValid),
+                         yesNo(h.serviceAccepted), yesNo(h.qualified), yesNo(h.commissionProgram), h.appliedRate,
+                         h.base, h.commission, h.total, h.groupGifts, h.agencyGifts, h.groupBase, h.groupCommission, h.groupTotal
+                    ]);
+                    rows.push([], ['TỔNG HOST'], ['Phí gói đủ điều kiện', c.hostBase], ['Hoa hồng Host tham chiếu', c.hostCommission],
+                         ['Tổng thu nhập Host tạm tính', c.hostTotal], [], ['THU NHẬP AGENCY'],
+                         ['Host đạt chuẩn', c.qualifiedCount], ['Tổng Host', c.totalHosts], ['KD nhập toàn đội', c.allGifts],
+                         ['KD hợp lệ từ Host đạt chuẩn', c.agencyGifts], ['Hoa hồng Agency 3%', c.agencyParts[0].amount],
+                         ['Hoa hồng Agency 4%', c.agencyParts[1].amount], ['Hoa hồng Agency 5%', c.agencyParts[2].amount],
+                         ['Tổng hoa hồng Agency', c.agencyCommission], ['Đã kích hoạt thưởng số Host (từ 3 người)', yesNo(c.agencyBonusOK)],
+                         ['Thưởng số Host đạt chuẩn', c.agencyFixed], ['TỔNG THU NHẬP AGENCY', c.agencyTotal], [],
+                         ['GHI CHÚ', 'Các xác nhận là giả định mô phỏng, không thay thế nghiệm thu. Phí gói chưa đủ điều kiện tạm tính 0; chưa mô phỏng chi trả một phần. Hoa hồng Host cần xác nhận chương trình riêng. Agency: HH lũy tiến từ 300.000 KD hợp lệ; thưởng 100.000đ × N khi N >= 3. 1 KD = 20đ phục vụ KPI, không phải tỷ giá tiền mặt.']);
+                    return rows;
                }
-               function downloadFile(text, filename, contentType) { const blob = new Blob([text], { type: contentType }); const href = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = href; link.download = filename; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(href), 1000); }
-               $('exportBtn')?.addEventListener('click', () => { downloadFile('\ufeff' + csvRows().map(row => row.map(csvEscape).join(';')).join('\r\n'), 'motchap_agency_host_S_A_.csv', 'text/csv;charset=utf-8'); notify('Đã xuất bảng lương Host và Agency ra CSV.'); });
+
                function summaryText() {
-                    const c = snapshot; let s = [
-                         'MOTCHAP - MO PHONG THU NHAP AGENCY ()', 'Giá KPI: 1 KD = 20đ', 'Mở hoa hồng Host: 50.000 KD; mở hoa hồng Agency: 300.000 KD',
-                         `Tổng Host: ${c.totalHosts} (${c.items.length} nhóm); đạt chuẩn: ${c.qualifiedCount} (S: ${c.qualifiedS}, A: ${c.qualifiedA})`,
-                         `GIFT toàn đội: ${kd(c.allGifts)}`, `KD tính hoa hồng Agency: ${kd(c.agencyGifts)}`,
-                         `Hoa hồng Agency: ${money(c.agencyCommission)}`, `Thưởng 100.000đ/Host đạt chuẩn: ${money(c.agencyFixed)}`, `TỔNG AGENCY: ${money(c.agencyTotal)}`, '', 'BẢNG LƯƠNG HOST'
-                    ]; for (const h of c.items) s.push(`${h.id} (${h.rank}) × ${h.count} Host: ${h.hours} giờ/người; ${kd(h.gifts)}/người; ${h.qualified ? 'đạt chuẩn' : 'chưa đạt'}; lương ${money(h.base)}/người; hoa hồng ${money(h.commission)}/người; tổng ${money(h.groupTotal)}/nhóm`); s.push('TỔNG NHÓM HOST: ' + money(c.hostTotal)); return s.join('\n');
+                    const c = snapshot;
+                    const lines = [
+                         'MOTCHAP - MÔ PHỎNG THU NHẬP AGENCY & HOST · ' + POLICY_DATE,
+                         'Giá trị KPI: 1 KD = 20đ; không phải tỷ giá tiền mặt.',
+                         `Host đạt chuẩn: ${c.qualifiedCount}/${c.totalHosts}; KD hợp lệ tính Agency: ${kd(c.agencyGifts)}`,
+                         `Hoa hồng Agency: ${money(c.agencyCommission)}`,
+                         `Thưởng số Host (từ 3 người): ${money(c.agencyFixed)} · ${c.agencyBonusOK ? 'đã kích hoạt' : 'chưa kích hoạt'}`,
+                         `TỔNG THU NHẬP AGENCY: ${money(c.agencyTotal)}`, ''
+                    ];
+                    for (const h of c.items) lines.push(
+                         `${h.id} (${h.rank}) × ${h.count}: gói ${h.packageHours} giờ, ${money(h.packageFee)}/người; ${h.hours} giờ hợp lệ, ${kd(h.gifts)}/người; ` +
+                         `${h.qualified ? 'đạt chuẩn Agency' : 'chưa đạt chuẩn Agency'}; phí đủ điều kiện ${money(h.base)}/người; ` +
+                         `chương trình HH ${h.commissionProgram ? 'đã xác nhận' : 'chưa áp dụng'}, HH ${h.appliedRate}% = ${money(h.commission)}/người; tổng nhóm ${money(h.groupTotal)}. ` + status(h).explain
+                    );
+                    lines.push('', 'TỔNG THU NHẬP HOST TẠM TÍNH: ' + money(c.hostTotal),
+                         'Xác nhận trong kịch bản là giả định. Chưa mô phỏng phí gói chi trả một phần; chi trả cuối cùng theo nghiệm thu và thỏa thuận áp dụng.');
+                    return lines.join('\n');
                }
-               function fallbackCopy(text) { const area = document.createElement('textarea'); area.value = text; area.style.cssText = 'position:fixed;opacity:0;top:0;left:0'; document.body.appendChild(area); area.select(); const ok = document.execCommand('copy'); area.remove(); notify(ok ? 'Đã sao chép tóm tắt.' : 'Trình duyệt không hỗ trợ sao chép; bạn có thể dùng Xuất CSV.'); }
-               $('copyBtn')?.addEventListener('click', () => { let t = summaryText(); if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(() => notify('Đã sao chép tóm tắt.'), () => fallbackCopy(t)); } else fallbackCopy(t); });
-               $('printBtn')?.addEventListener('click', () => window.print());
-               let toastTimeout; function notify(msg) { let el = $('toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(toastTimeout); toastTimeout = setTimeout(() => el.classList.remove('show'), 2700); }
-               // Chỉ dùng để kiểm thử cục bộ; dữ liệu không được gửi tới server.
-               Object.defineProperty(window, 'motchapAgencyTest', { value: Object.freeze({ snapshot: () => JSON.parse(JSON.stringify(snapshot)), hosts: () => JSON.parse(JSON.stringify(hosts)), add: rank => addHost(rank), update: (id, field, value) => { let h = hosts.find(x => x.id === id); if (!h || !['count', 'hours', 'gifts'].includes(field)) return; h[field] = Math.max(field === 'count' ? 1 : 0, Math.min(field === 'count' ? 100 : field === 'hours' ? 240 : 3000000, Math.round(Number(value) || 0))); let card = document.querySelector(`[data-host-id="${id}"]`); if (card) { let number = card.querySelector(`[data-host-number="${id}"][data-kind="${field}"]`); if (number) number.value = h[field]; let slider = card.querySelector(`[data-host-slider="${id}"][data-kind="${field}"]`); if (slider) { slider.value = h[field]; updateRange(slider); } } refresh(); }, reset }) });
+
+               function downloadFile(text, filename, contentType) {
+                    const url = URL.createObjectURL(new Blob([text], { type: contentType }));
+                    const link = document.createElement('a');
+                    link.href = url; link.download = filename;
+                    document.body.appendChild(link); link.click(); link.remove();
+                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+               }
+               $('exportBtn').addEventListener('click', () => {
+                    downloadFile('\ufeff' + csvRows().map(row => row.map(csvEscape).join(';')).join('\r\n'),
+                         'motchap_agency_host_2026-10-28.csv', 'text/csv;charset=utf-8');
+                    notify('Đã xuất bảng kê gói dịch vụ Host và Agency.');
+               });
+               function fallbackCopy(text) {
+                    const area = document.createElement('textarea');
+                    area.value = text; area.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+                    document.body.appendChild(area); area.select();
+                    const ok = document.execCommand('copy'); area.remove();
+                    notify(ok ? 'Đã sao chép tóm tắt.' : 'Không thể sao chép; bạn có thể dùng Xuất CSV.');
+               }
+               $('copyBtn').addEventListener('click', () => {
+                    const text = summaryText();
+                    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text)
+                         .then(() => notify('Đã sao chép tóm tắt.'), () => fallbackCopy(text));
+                    else fallbackCopy(text);
+               });
+               $('printBtn').addEventListener('click', () => window.print());
+               function notify(message) {
+                    put('toast', message); $('toast').classList.add('show'); clearTimeout(toastTimeout);
+                    toastTimeout = setTimeout(() => $('toast').classList.remove('show'), 2700);
+               }
+               // Local inspection hook; all calculations remain offline.
+               Object.defineProperty(window, 'motchapAgencyTest', { value: Object.freeze({
+                    snapshot: () => JSON.parse(JSON.stringify(snapshot)),
+                    hosts: () => JSON.parse(JSON.stringify(hosts)),
+                    add: rank => addHost(rank),
+                    update: (id, field, value) => {
+                         const host = hosts.find(x => x.id === id);
+                         if (host && setValue(host, field, value)) renderHostList();
+                    },
+                    reset
+               }) });
                defaults(); renderHostList();
           })();
      </script>
 </body>
-
 </html>
