@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width,initial-scale=1">
+     <meta name="color-scheme" content="dark">
+     <meta name="description"
+          content="Mô phỏng Agency/Host Motchap: lương giờ độc lập, hoa hồng Host từ 50.000 KD, hoa hồng Agency từ 300.000 KD, thưởng 100.000đ mỗi Host đạt chuẩn. Hoạt động offline.">
+     <title>Motchap Agency | Mô phỏng nhiều Host tương tự S & A</title>
+     <style>
+          :root {
+               --bg: #0a0c15;
+               --surface: #151928;
+               --surface2: #1c2132;
+               --surface3: #242b3e;
+               --stroke: #30364a;
+               --muted: #a0abc3;
+               --text: #f1f4fc;
+               --purple: #b492ff;
+               --purple2: #8354e7;
+               --green: #44d9ba;
+               --gold: #f4bc71;
+               --blue: #87b8ff;
+               --red: #ff8896;
+               --shadow: 0 14px 40px #03051137;
+               --radius: 18px
+          }
+
+          * {
+               box-sizing: border-box
+          }
+
+          html {
+               scroll-behavior: smooth
+          }
+
+          body {
+               margin: 0;
+               background: radial-gradient(ellipse 58% 26% at 92% 0, #4228645e, transparent 84%), radial-gradient(ellipse 48% 22% at 1% 22%, #26375b3b, transparent 86%), var(--bg);
+               color: var(--text);
+               font: 14px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif
+          }
+
+          button,
+          input {
+               font: inherit
+          }
+
+          button {
+               cursor: pointer
+          }
+
+          button:focus-visible,
+          input:focus-visible {
+               outline: 2px solid #cab4ff;
+               outline-offset: 3px
+          }
+
+          button:disabled {
+               opacity: .48;
+               cursor: not-allowed;
+               transform: none !important
+          }
+
+          .wrapper {
+               max-width: 1520px;
+               padding: 0 24px;
+               margin: 0 auto
+          }
+
+          .topbar {
+               background: #0d101bd4;
+               border-bottom: 1px solid #ffffff17;
+               backdrop-filter: blur(18px)
+          }
+
+          .top-inner {
+               min-height: 77px;
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               gap: 18px
+          }
+
+          .brand {
+               display: flex;
+               align-items: center;
+               gap: 12px
+          }
+
+          .brand-icon {
+               width: 42px;
+               height: 42px;
+               border-radius: 13px;
+               display: grid;
+               place-items: center;
+               background: linear-gradient(145deg, #c0a2ff, #7850d3);
+               font-size: 22px;
+               font-weight: 950;
+               box-shadow: 0 5px 19px #955ef852
+          }
+
+          .brand strong {
+               display: block;
+               line-height: 1.1;
+               font-size: 16px;
+               letter-spacing: .5px
+          }
+
+          .brand small {
+               display: block;
+               margin-top: 5px;
+               color: var(--muted);
+               font-size: 10px;
+               letter-spacing: .65px
+          }
+
+          .actions {
+               display: flex;
+               gap: 8px;
+               flex-wrap: wrap;
+               justify-content: flex-end
+          }
+
+          .btn {
+               display: inline-flex;
+               align-items: center;
+               justify-content: center;
+               gap: 8px;
+               border: 1px solid #454c66;
+               padding: 10px 13px;
+               background: #ffffff09;
+               color: #edf2ff;
+               font-weight: 700;
+               font-size: 12px;
+               border-radius: 10px;
+               white-space: nowrap;
+               transition: background .14s, transform .14s
+          }
+
+          .btn:hover {
+               background: #ffffff19;
+               transform: translateY(-1px)
+          }
+
+          .btn.primary {
+               background: linear-gradient(115deg, #8554e3, #ae77ff);
+               border-color: transparent;
+               color: #fff;
+               box-shadow: 0 5px 18px #7f52e844
+          }
+
+          .btn.primary:hover {
+               filter: brightness(1.08)
+          }
+
+          .btn.ghost {
+               border-color: #ffffff17
+          }
+
+          .btn.danger {
+               color: #ffa6b1;
+               border-color: #963f5755;
+               background: #ae314515;
+               padding: 7px 10px
+          }
+
+          .btn.danger:hover {
+               background: #b83d5f2c
+          }
+
+          .ico {
+               font-size: 16px;
+               line-height: 1
+          }
+
+          .intro {
+               padding: 34px 0 23px
+          }
+
+          .eyebrow {
+               font-size: 11px;
+               letter-spacing: 1.6px;
+               text-transform: uppercase;
+               font-weight: 800;
+               color: #c2a7ff
+          }
+
+          .intro h1 {
+               font-size: clamp(27px, 3vw, 39px);
+               line-height: 1.19;
+               letter-spacing: -.8px;
+               margin: 9px 0 10px
+          }
+
+          .intro p {
+               font-size: 14px;
+               margin: 0;
+               max-width: 850px;
+               color: #abb6ca
+          }
+
+          .pills {
+               display: flex;
+               gap: 8px;
+               flex-wrap: wrap;
+               margin-top: 17px
+          }
+
+          .pill {
+               border: 1px solid #55416b9d;
+               background: #a77fff13;
+               color: #d5c2ff;
+               padding: 6px 11px;
+               border-radius: 30px;
+               font-weight: 700;
+               font-size: 11px
+          }
+
+          .pill.neutral {
+               border-color: var(--stroke);
+               color: #c9d3e7;
+               background: #ffffff06
+          }
+
+          .stats {
+               display: grid;
+               grid-template-columns: 1.5fr 1fr 1fr 1fr;
+               gap: 14px;
+               margin: 0 0 20px
+          }
+
+          .stat {
+               padding: 20px;
+               border: 1px solid var(--stroke);
+               border-radius: 17px;
+               background: var(--surface);
+               min-width: 0
+          }
+
+          .stat.feature {
+               border-color: #aa8cf288;
+               background: linear-gradient(115deg, #342448, #161a2b 84%);
+               box-shadow: 0 14px 36px #54386e20
+          }
+
+          .stat .label {
+               color: #a9b5ca;
+               font-size: 12px;
+               font-weight: 650
+          }
+
+          .stat .val {
+               font-size: clamp(19px, 2.1vw, 32px);
+               font-weight: 850;
+               letter-spacing: -.6px;
+               font-variant-numeric: tabular-nums;
+               margin: 12px 0 4px;
+               line-height: 1.2;
+               overflow-wrap: anywhere
+          }
+
+          .stat.feature .val {
+               color: #eadbff
+          }
+
+          .stat .detail {
+               font-size: 11px;
+               color: var(--muted);
+               line-height: 1.5
+          }
+
+          .stat .detail strong {
+               color: #dce3f1
+          }
+
+          .workspace {
+               display: grid;
+               grid-template-columns: minmax(370px, 1.06fr) minmax(400px, .94fr);
+               gap: 18px;
+               align-items: start
+          }
+
+          .panel {
+               background: var(--surface);
+               border: 1px solid var(--stroke);
+               border-radius: var(--radius);
+               box-shadow: var(--shadow);
+               min-width: 0
+          }
+
+          .panel-inner {
+               padding: 22px
+          }
+
+          .panel-title {
+               display: flex;
+               justify-content: space-between;
+               align-items: flex-start;
+               gap: 12px
+          }
+
+          .panel-title h2 {
+               font-size: 20px;
+               letter-spacing: -.3px;
+               margin: 3px 0 5px
+          }
+
+          .panel-title p {
+               font-size: 12px;
+               color: var(--muted);
+               margin: 0
+          }
+
+          .micro {
+               font-size: 10px;
+               text-transform: uppercase;
+               letter-spacing: 1.4px;
+               font-weight: 850;
+               color: #ad9acb
+          }
+
+          .adders {
+               display: flex;
+               gap: 8px;
+               flex-wrap: wrap;
+               margin: 21px 0 16px
+          }
+
+          .adders .btn {
+               padding: 11px 14px
+          }
+
+          .btn.add-s {
+               border-color: #755c3c;
+               background: #d5a16113;
+               color: #ffe0aa
+          }
+
+          .btn.add-a {
+               border-color: #546c99;
+               background: #75aaff16;
+               color: #b5d4ff
+          }
+
+          .hostlist {
+               display: flex;
+               flex-direction: column;
+               gap: 13px
+          }
+
+          .host-card {
+               border: 1px solid #363d55;
+               border-radius: 15px;
+               background: linear-gradient(160deg, #202537, #1a1f2f);
+               padding: 16px;
+               position: relative
+          }
+
+          .host-card.s {
+               border-left: 3px solid #c9a05c
+          }
+
+          .host-card.a {
+               border-left: 3px solid #82aaff
+          }
+
+          .host-top {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               gap: 10px;
+               margin-bottom: 17px
+          }
+
+          .host-title {
+               display: flex;
+               align-items: center;
+               gap: 10px;
+               min-width: 0
+          }
+
+          .rank-badge {
+               width: 30px;
+               height: 30px;
+               border-radius: 9px;
+               display: grid;
+               place-items: center;
+               font-size: 13px;
+               font-weight: 900;
+               background: #a97d351f;
+               color: #ffd58e;
+               border: 1px solid #cca35a5b
+          }
+
+          .rank-badge.a {
+               color: #b8d1ff;
+               background: #6396e71a;
+               border-color: #6f9feb57
+          }
+
+          .host-title strong {
+               display: block;
+               font-size: 14px
+          }
+
+          .host-title small {
+               display: block;
+               font-size: 10px;
+               color: #a6b0c4
+          }
+
+          .sliders {
+               display: grid;
+               gap: 15px
+          }
+
+          .slider-control.host-quantity {
+               background: #b492ff0b;
+               border: 1px solid #7661a33b;
+               border-radius: 10px;
+               padding: 10px 11px 7px;
+               margin-bottom: 3px
+          }
+
+          .slider-control.host-quantity .ctrl-label label {
+               color: #dac6ff
+          }
+
+          .host-quantity-note {
+               color: #9ca8c3;
+               font-size: 10px;
+               margin-top: 5px
+          }
+
+          .host-quantity .rangeslider {
+               margin-top: 11px
+          }
+
+          .ctrl-label {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               gap: 10px;
+               margin-bottom: 5px
+          }
+
+          .ctrl-label label {
+               font-size: 12px;
+               font-weight: 700;
+               color: #e0e9f7
+          }
+
+          .valuebox {
+               display: flex;
+               align-items: center;
+               gap: 4px;
+               background: #2b3145;
+               border: 1px solid #404965;
+               border-radius: 8px;
+               padding: 0 7px
+          }
+
+          .valuebox input {
+               width: 90px;
+               text-align: right;
+               border: 0;
+               outline: none;
+               color: #d5baff;
+               font-weight: 850;
+               font-size: 13px;
+               background: transparent;
+               padding: 6px 0;
+               font-variant-numeric: tabular-nums;
+               appearance: textfield;
+               -moz-appearance: textfield
+          }
+
+          .valuebox input::-webkit-outer-spin-button,
+          .valuebox input::-webkit-inner-spin-button {
+               -webkit-appearance: none;
+               margin: 0
+          }
+
+          .valuebox span {
+               color: #aebad0;
+               font-size: 10px;
+               white-space: nowrap
+          }
+
+          .rangeslider {
+               --fill: 0%;
+               appearance: none;
+               -webkit-appearance: none;
+               width: 100%;
+               height: 6px;
+               display: block;
+               border-radius: 100px;
+               background: linear-gradient(to right, #a17cff var(--fill), #414b64 var(--fill));
+               margin: 13px 0 5px;
+               cursor: pointer
+          }
+
+          .rangeslider::-webkit-slider-thumb {
+               -webkit-appearance: none;
+               width: 17px;
+               height: 17px;
+               border-radius: 50%;
+               border: 4px solid #b18aff;
+               background: #fff;
+               box-shadow: 0 2px 8px #0008
+          }
+
+          .rangeslider::-moz-range-thumb {
+               width: 10px;
+               height: 10px;
+               border-radius: 50%;
+               border: 4px solid #b18aff;
+               background: #fff
+          }
+
+          .range-ends {
+               display: flex;
+               justify-content: space-between;
+               color: #7e8aa2;
+               font-size: 10px
+          }
+
+          .host-status {
+               border-top: 1px solid #3a425b;
+               margin-top: 15px;
+               padding-top: 13px
+          }
+
+          .flag {
+               font-size: 12px;
+               font-weight: 800;
+               display: flex;
+               gap: 7px;
+               align-items: center
+          }
+
+          .flag.ok {
+               color: var(--green)
+          }
+
+          .flag.mid {
+               color: var(--gold)
+          }
+
+          .flag.no {
+               color: var(--red)
+          }
+
+          .host-status .detail {
+               font-size: 11px;
+               color: #9eaac2;
+               margin-top: 4px
+          }
+
+          .host-costs {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               gap: 8px;
+               margin-top: 12px;
+               padding: 9px 11px;
+               background: #ffffff08;
+               border-radius: 9px;
+               font-size: 11px
+          }
+
+          .host-costs span {
+               color: #b1bdd1
+          }
+
+          .host-costs strong {
+               color: #fff;
+               font-size: 14px;
+               font-variant-numeric: tabular-nums
+          }
+
+          .emptyhosts {
+               padding: 35px 18px;
+               border: 1px dashed #525973;
+               border-radius: 13px;
+               color: #aeb9cf;
+               text-align: center
+          }
+
+          .emptyhosts strong {
+               display: block;
+               color: #fff;
+               margin-bottom: 5px
+          }
+
+          .agency {
+               position: sticky;
+               top: 15px
+          }
+
+          .total-hero {
+               border: 1px solid #7363a36e;
+               border-radius: 13px;
+               margin-top: 19px;
+               padding: 19px;
+               background: radial-gradient(ellipse 90% 150% at 105% 0, #8751d64a, transparent 65%), linear-gradient(145deg, #2a2540, #1b2131)
+          }
+
+          .total-hero .mini {
+               font-size: 11px;
+               letter-spacing: 1.2px;
+               text-transform: uppercase;
+               color: #c7b5e9;
+               font-weight: 850
+          }
+
+          .total-hero .big {
+               font-size: clamp(26px, 3vw, 40px);
+               font-weight: 900;
+               line-height: 1.15;
+               letter-spacing: -1px;
+               margin: 9px 0 7px;
+               overflow-wrap: anywhere;
+               font-variant-numeric: tabular-nums
+          }
+
+          .total-hero p {
+               color: #abafd1;
+               font-size: 11px;
+               margin: 0
+          }
+
+          .agency-break {
+               display: flex;
+               flex-direction: column;
+               gap: 13px;
+               margin-top: 19px
+          }
+
+          .line-item {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               gap: 14px;
+               font-size: 13px
+          }
+
+          .line-item span {
+               color: #bac4d8
+          }
+
+          .line-item strong {
+               white-space: nowrap;
+               font-variant-numeric: tabular-nums
+          }
+
+          .line-item.total {
+               padding-top: 14px;
+               border-top: 1px solid var(--stroke)
+          }
+
+          .line-item.total strong {
+               font-size: 16px;
+               color: #e7d7ff
+          }
+
+          .rule {
+               height: 1px;
+               background: var(--stroke);
+               margin: 18px 0
+          }
+
+          .small-grid {
+               display: grid;
+               grid-template-columns: repeat(2, minmax(0, 1fr));
+               gap: 10px
+          }
+
+          .small-box {
+               border: 1px solid #343c53;
+               border-radius: 10px;
+               padding: 12px;
+               background: #ffffff04;
+               min-width: 0
+          }
+
+          .small-box small {
+               display: block;
+               font-size: 11px;
+               color: var(--muted)
+          }
+
+          .small-box b {
+               font-size: 18px;
+               display: block;
+               margin: 7px 0 1px;
+               font-variant-numeric: tabular-nums
+          }
+
+          .progress-note {
+               margin-top: 16px;
+               border: 1px solid #4a496a;
+               background: #a37bff0c;
+               border-radius: 10px;
+               padding: 13px;
+               font-size: 12px;
+               color: #c9d1e5
+          }
+
+          .progress-note b {
+               color: #f1e8ff
+          }
+
+          .progress {
+               height: 8px;
+               background: #3b4158;
+               border-radius: 99px;
+               overflow: hidden;
+               margin: 9px 0
+          }
+
+          .progress>span {
+               height: 100%;
+               display: block;
+               background: linear-gradient(90deg, #8267db, #bc9aff);
+               border-radius: 99px;
+               transition: width .15s
+          }
+
+          .policy-tip {
+               font-size: 11px;
+               color: #a9b4cb;
+               margin-top: 15px;
+               line-height: 1.65
+          }
+
+          .fullpanel {
+               margin-top: 18px
+          }
+
+          .table-wrap {
+               overflow-x: auto;
+               border: 1px solid #353d52;
+               border-radius: 13px
+          }
+
+          .table {
+               border-collapse: collapse;
+               width: 100%;
+               font-size: 12px;
+               font-variant-numeric: tabular-nums
+          }
+
+          .table th,
+          .table td {
+               border-bottom: 1px solid #333b50;
+               padding: 12px 12px;
+               text-align: right;
+               white-space: nowrap
+          }
+
+          .table th {
+               background: #242b3e;
+               color: #bfcce3;
+               font-size: 11px;
+               font-weight: 750
+          }
+
+          .table td {
+               color: #e5eaf6
+          }
+
+          .table th:first-child,
+          .table td:first-child {
+               text-align: left;
+               position: sticky;
+               left: 0;
+               z-index: 1;
+               background: #202536
+          }
+
+          .table th:first-child {
+               background: #242b3e;
+               z-index: 2
+          }
+
+          .table tr:last-child td {
+               border-bottom: 0
+          }
+
+          .table tbody tr:hover td {
+               background: #292e43
+          }
+
+          .table tbody tr:hover td:first-child {
+               background: #30364b
+          }
+
+          .table .totalrow td {
+               font-weight: 850;
+               background: #a77dff0d
+          }
+
+          .table .totalrow td:first-child {
+               background: #302a40
+          }
+
+          .table .zero {
+               color: #8793aa
+          }
+
+          .table .paycell {
+               font-weight: 850;
+               color: #e5d3ff
+          }
+
+          .table .flagcell {
+               font-weight: 700
+          }
+
+          .table .flagcell.ok {
+               color: var(--green)
+          }
+
+          .table .flagcell.mid {
+               color: var(--gold)
+          }
+
+          .table .flagcell.no {
+               color: var(--red)
+          }
+
+          .mini-badge {
+               display: inline-block;
+               padding: 3px 7px;
+               border-radius: 6px;
+               border: 1px solid #7b6188;
+               color: #dec0ff;
+               background: #8e68c01b;
+               font-size: 10px;
+               font-weight: 800
+          }
+
+          .mini-badge.s {
+               border-color: #aa885d;
+               color: #f4ce97;
+               background: #94683122
+          }
+
+          .mini-badge.a {
+               border-color: #568bd0;
+               color: #b5d4ff;
+               background: #4275ab22
+          }
+
+          .table-note {
+               font-size: 11px;
+               color: var(--muted);
+               margin: 12px 0 0
+          }
+
+          .cols {
+               display: grid;
+               grid-template-columns: 1fr 1fr;
+               gap: 18px
+          }
+
+          .subsection {
+               border: 1px solid #343a50;
+               background: #1a2031;
+               border-radius: 12px;
+               padding: 16px
+          }
+
+          .subsection h3 {
+               margin: 0 0 13px;
+               font-size: 14px
+          }
+
+          .rates {
+               display: grid;
+               gap: 0
+          }
+
+          .rate {
+               display: grid;
+               grid-template-columns: 1fr auto auto;
+               gap: 9px;
+               align-items: center;
+               padding: 9px 0;
+               border-bottom: 1px dashed #3c455d
+          }
+
+          .rate:last-child {
+               border-bottom: 0
+          }
+
+          .rate span {
+               color: #aab7cf;
+               font-size: 11px
+          }
+
+          .rate small {
+               font-size: 11px;
+               color: #c2cbe0
+          }
+
+          .rate strong {
+               font-size: 12px;
+               font-variant-numeric: tabular-nums;
+               white-space: nowrap
+          }
+
+          .constgrid {
+               display: grid;
+               grid-template-columns: repeat(3, 1fr);
+               gap: 10px
+          }
+
+          .constitem {
+               border: 1px solid #3d445c;
+               background: #ffffff05;
+               border-radius: 10px;
+               padding: 13px
+          }
+
+          .constitem small {
+               color: #aab5cb;
+               display: block;
+               font-size: 11px
+          }
+
+          .constitem strong {
+               display: block;
+               margin-top: 5px;
+               font-size: 17px;
+               font-variant-numeric: tabular-nums
+          }
+
+          .constitem strong.gold {
+               color: var(--gold)
+          }
+
+          .constitem strong.blue {
+               color: var(--blue)
+          }
+
+          .hintblock {
+               margin-top: 16px;
+               background: #242b3c;
+               border: 1px solid #3f4860;
+               border-radius: 11px;
+               padding: 13px;
+               color: #b5c1d5;
+               font-size: 12px
+          }
+
+          .hintblock strong {
+               color: #ecf3ff
+          }
+
+          .footer {
+               margin: 26px 0 42px;
+               font-size: 11px;
+               color: #8895af;
+               line-height: 1.7
+          }
+
+          .toast {
+               position: fixed;
+               bottom: 22px;
+               right: 22px;
+               background: #232c40;
+               border: 1px solid #7764a0;
+               border-radius: 11px;
+               color: #fff;
+               padding: 11px 16px;
+               font-size: 12px;
+               box-shadow: 0 15px 40px #0009;
+               max-width: 340px;
+               z-index: 30;
+               opacity: 0;
+               transform: translateY(12px);
+               pointer-events: none;
+               transition: opacity .2s, transform .2s
+          }
+
+          .toast.show {
+               opacity: 1;
+               transform: translateY(0)
+          }
+
+          @media(max-width:1100px) {
+               .stats {
+                    grid-template-columns: repeat(2, minmax(0, 1fr))
+               }
+
+               .workspace {
+                    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)
+               }
+
+               .panel-inner {
+                    padding: 19px
+               }
+          }
+
+          @media(max-width:850px) {
+               .workspace {
+                    grid-template-columns: 1fr
+               }
+
+               .agency {
+                    position: static
+               }
+
+               .cols {
+                    grid-template-columns: 1fr
+               }
+
+               .top-inner {
+                    align-items: flex-start;
+                    flex-direction: column;
+                    padding: 16px 0
+               }
+
+               .actions {
+                    justify-content: flex-start
+               }
+
+               .intro {
+                    padding-top: 25px
+               }
+
+               .stats {
+                    gap: 10px
+               }
+          }
+
+          @media(max-width:580px) {
+               .wrapper {
+                    padding: 0 14px
+               }
+
+               .top-inner {
+                    gap: 14px
+               }
+
+               .topbar .btn {
+                    padding: 8px 10px;
+                    font-size: 11px
+               }
+
+               .actions {
+                    gap: 6px
+               }
+
+               .intro h1 {
+                    font-size: 28px
+               }
+
+               .intro p {
+                    font-size: 12px
+               }
+
+               .panel-inner {
+                    padding: 16px
+               }
+
+               .panel-title h2 {
+                    font-size: 18px
+               }
+
+               .stat {
+                    padding: 15px
+               }
+
+               .stat .val {
+                    font-size: 21px
+               }
+
+               .stats .stat.feature {
+                    grid-column: span 2
+               }
+
+               .stats {
+                    grid-template-columns: repeat(2, minmax(0, 1fr))
+               }
+
+               .constgrid {
+                    grid-template-columns: 1fr 1fr
+               }
+
+               .host-card {
+                    padding: 14px
+               }
+
+               .valuebox input {
+                    width: 82px
+               }
+
+               .small-grid {
+                    gap: 9px
+               }
+          }
+
+          @media print {
+               @page {
+                    size: A4 landscape;
+                    margin: 11mm
+               }
+
+               body {
+                    background: #fff !important;
+                    color: #1d2330 !important;
+                    font-size: 10px
+               }
+
+               .topbar,
+               .adders,
+               .scenario,
+               .btn,
+               .actions,
+               .toast {
+                    display: none !important
+               }
+
+               .wrapper {
+                    max-width: none;
+                    padding: 0
+               }
+
+               .intro {
+                    padding: 0 0 9px
+               }
+
+               .intro h1 {
+                    font-size: 22px;
+                    color: #242834
+               }
+
+               .intro p {
+                    color: #566079
+               }
+
+               .pills {
+                    display: none
+               }
+
+               .stats {
+                    grid-template-columns: repeat(4, 1fr)
+               }
+
+               .stat {
+                    padding: 8px;
+                    background: #fff !important;
+                    box-shadow: none;
+                    border: 1px solid #d8dce4
+               }
+
+               .stat .val {
+                    font-size: 16px;
+                    color: #262835 !important
+               }
+
+               .stat .label,
+               .stat .detail {
+                    color: #505b6a
+               }
+
+               .workspace {
+                    display: block
+               }
+
+               .agency {
+                    position: static;
+                    break-inside: avoid
+               }
+
+               .panel {
+                    background: #fff !important;
+                    color: #263044;
+                    box-shadow: none;
+                    border: 1px solid #d3d7e2;
+                    break-inside: avoid
+               }
+
+               .panel-inner {
+                    padding: 10px
+               }
+
+               .total-hero {
+                    background: #fff !important;
+                    border: 1px solid #d3d7e2
+               }
+
+               .total-hero .mini,
+               .total-hero .big,
+               .total-hero p {
+                    color: #273247
+               }
+
+               .line-item span,
+               .small-box small,
+               .policy-tip,
+               .table-note,
+               .panel-title p {
+                    color: #505b6a
+               }
+
+               .small-box,
+               .subsection,
+               .hintblock,
+               .constitem,
+               .progress-note {
+                    background: #fff !important;
+                    color: #293041;
+                    border-color: #d3d7e2
+               }
+
+               .fullpanel {
+                    margin-top: 12px;
+                    break-inside: auto
+               }
+
+               .table {
+                    font-size: 9px
+               }
+
+               .table th,
+               .table td {
+                    padding: 6px;
+                    border-bottom: 1px solid #ddd;
+                    color: #273247
+               }
+
+               .table th,
+               .table th:first-child,
+               .table td:first-child,
+               .table .totalrow td,
+               .table .totalrow td:first-child {
+                    background: #f4f5f8;
+                    color: #273247
+               }
+
+               .table-wrap {
+                    overflow: visible;
+                    border: 1px solid #dadde5
+               }
+
+               .footer {
+                    color: #505b6a
+               }
+
+               .cols {
+                    grid-template-columns: 1fr 1fr
+               }
+
+               .stat .val {
+                    overflow-wrap: anywhere
+               }
+          }
+     </style>
+</head>
+
+<body>
+     <header class="topbar">
+          <div class="wrapper top-inner">
+               <div class="brand">
+                    <!-- <div class="brand-icon" aria-hidden="true">M</div> -->
+                    <div><strong>MOTCHAP</strong><small>AGENCY EARNINGS SIMULATOR</small></div>
+               </div>
+          </div>
+     </header>
+     <main class="wrapper">
+          <section class="intro">
+               <div class="eyebrow">Công cụ dành cho Agency</div>
+               <h1>Bảng thu nhập Agency &amp; Host</h1>
+               <p>Tạo các nhóm Host S/A có cùng hiệu suất; chọn số Host tương tự, giờ và KD quà bình quân mỗi người.
+                    Lương theo giờ và hoa hồng theo doanh số được tính <strong>độc lập</strong>. Chỉ Host đủ chuẩn mới
+                    đóng góp vào hoa hồng và thưởng quản lý Agency.</p>
+               <div class="pills"><span class="pill">1 KD = 20đ KPI</span><span class="pill neutral">Hoa hồng tính lũy
+                         tiến</span><span class="pill neutral">Hoa hồng Host từ 50.000 KD</span><span
+                         class="pill neutral">Hoa hồng Agency từ 300.000 KD</span><span class="pill neutral">Mặc định 1 Host A + 1 Host S</span><span class="pill neutral">Không hiển thị tài chính Dolfie</span>
+               </div>
+          </section>
+          <section class="stats" aria-label="Tổng quan thu nhập Agency">
+               <article class="stat feature">
+                    <div class="label">Thu nhập Agency trong tháng</div>
+                    <div class="val" id="topAgency">0đ</div>
+                    <div class="detail">Hoa hồng nhóm + thưởng số Host đạt chuẩn</div>
+               </article>
+               <article class="stat">
+                    <div class="label">Hoa hồng theo doanh số</div>
+                    <div class="val" id="topComm">0đ</div>
+                    <div class="detail">Tính lũy tiến theo <strong>KD của Host đạt chuẩn</strong></div>
+               </article>
+               <article class="stat">
+                    <div class="label">Thưởng theo số Host</div>
+                    <div class="val" id="topFixed">0đ</div>
+                    <div class="detail">100.000đ cho mỗi Host đạt chuẩn · không yêu cầu đủ 3 Host</div>
+               </article>
+               <article class="stat">
+                    <div class="label">Host đạt chuẩn</div>
+                    <div class="val" id="topEligible">0 / 2</div>
+                    <div class="detail">Tính theo giờ, GIFT và KPI từng hạng</div>
+               </article>
+          </section>
+          <section class="workspace" aria-label="Tùy chỉnh và tính thu nhập">
+               <div class="panel scenario">
+                    <div class="panel-inner">
+                         <div class="panel-title">
+                              <div>
+                                   <div class="micro">01 · Kịch bản</div>
+                                   <h2>Tùy chỉnh kịch bản</h2>
+                                   <p>Điều chỉnh số Host tương tự, giờ làm và KD quà trên mỗi Host.</p>
+                              </div><span class="pill neutral" id="hostCountLabel">2 Host</span>
+                         </div>
+                         <div class="adders"><button type="button" class="btn add-s" id="addS">＋ Thêm nhóm Host
+                                   S</button><button type="button" class="btn add-a" id="addA">＋ Thêm nhóm Host
+                                   A</button></div>
+                         <div id="hostList" class="hostlist" aria-live="off"></div>
+                         <div class="hintblock"><strong>Hai khoản thu nhập độc lập:</strong> <strong>Lương cứng</strong>
+                              chỉ có khi đủ giờ tối thiểu của hạng. <strong>Hoa hồng Host</strong> bắt đầu khi GIFT đạt
+                              <strong>50.000 KD</strong>, kể cả khi chưa đủ giờ/KPI. <strong>Host đạt chuẩn</strong> chỉ
+                              khi đồng thời đủ giờ và KPI KD/giờ; Host không đạt vẫn có thể nhận hoa hồng riêng nhưng
+                              <strong>không được tính vào doanh số thưởng Agency</strong>.
+                         </div>
+                    </div>
+               </div>
+               <aside class="panel agency">
+                    <div class="panel-inner">
+                         <div class="panel-title">
+                              <div>
+                                   <div class="micro">02 · Agency dashboard</div>
+                                   <h2>Chi tiết thu nhập Agency</h2>
+                                   <p>Tính theo số Host thực tế và doanh số nhân theo số lượng ở mỗi nhóm.</p>
+                              </div><span class="mini-badge">1 Agency</span>
+                         </div>
+                         <div class="total-hero">
+                              <div class="mini">Tổng tiền Agency được nhận</div>
+                              <div class="big" id="agencyTotal">0đ</div>
+                              <p>Hoa hồng mở từ 300.000 KD nhóm đủ chuẩn; thưởng 100.000đ/Host đạt chuẩn tính riêng.</p>
+                         </div>
+                         <div class="agency-break">
+                              <div class="line-item"><span>Hoa hồng bậc 3% (mở từ 300.000 KD)</span><strong
+                                        id="agTier0">0đ</strong></div>
+                              <div class="line-item"><span>Hoa hồng bậc 4%</span><strong id="agTier1">0đ</strong></div>
+                              <div class="line-item"><span>Hoa hồng bậc 5%</span><strong id="agTier2">0đ</strong></div>
+                              <div class="line-item total"><span>Tổng hoa hồng nhóm</span><strong
+                                        id="agencyCommission">0đ</strong></div>
+                              <div class="line-item"><span>Thưởng A = 100.000đ × Host đạt chuẩn</span><strong
+                                        id="agencyFixed">0đ</strong></div>
+                         </div>
+                         <div class="rule"></div>
+                         <div class="small-grid">
+                              <div class="small-box"><small>Tổng GIFT toàn đội</small><b id="agencyAllGift">0 KD</b>
+                              </div>
+                              <div class="small-box"><small>GIFT Host đạt chuẩn</small><b id="qualifiedKD">0 KD</b>
+                              </div>
+                              <div class="small-box"><small>KPI doanh số Agency</small><b id="agencyKPI">0đ</b></div>
+                              <div class="small-box"><small>Host S đạt chuẩn</small><b id="eligibleS">0</b></div>
+                              <div class="small-box"><small>Host A đạt chuẩn</small><b id="eligibleA">0</b></div>
+                         </div>
+                         <div class="progress-note">
+                              <div id="nextStep">Hoa hồng Agency chỉ mở khi GIFT đủ chuẩn đạt 300.000 KD.</div>
+                              <div class="progress"><span id="progressFill" style="width:0%"></span></div><small
+                                   id="thresholdNote">Mốc mở hoa hồng Agency: 300.000 KD</small>
+                         </div>
+                         <p class="policy-tip">GIFT của Host chưa đạt chuẩn không cộng vào doanh số Agency, dù Host đó
+                              vẫn được hưởng hoa hồng riêng khi đạt 50.000 KD. Thưởng quản lý trả 100.000đ/Host đạt
+                              chuẩn từ người đầu tiên, độc lập mốc mở hoa hồng 300.000 KD.</p>
+                    </div>
+               </aside>
+          </section>
+          <section class="panel fullpanel" id="payroll">
+               <div class="panel-inner">
+                    <div class="panel-title">
+                         <div>
+                              <div class="micro">03 · Bảng kê chi tiết</div>
+                              <h2>Bảng lương từng Host</h2>
+                              <p>Mỗi hàng là nhóm Host có cùng giờ và KD/người; hiển thị cả thu nhập/người và tổng nhóm.
+                              </p>
+                         </div><span class="pill neutral" id="payrollTotal">0đ toàn nhóm</span>
+                    </div>
+                    <div class="table-wrap" style="margin-top:19px">
+                         <table class="table">
+                              <thead>
+                                   <tr>
+                                        <th>Nhóm Host</th>
+                                        <th>Hạng</th>
+                                        <th>Số Host</th>
+                                        <th>Giờ/người</th>
+                                        <th>KD/người</th>
+                                        <th>KD cả nhóm</th>
+                                        <th>KPI cần/người</th>
+                                        <th>Lương cứng/người</th>
+                                        <th>HH bậc 1/người</th>
+                                        <th>HH bậc 2/người</th>
+                                        <th>HH bậc 3/người</th>
+                                        <th>HH bậc 4/người</th>
+                                        <th>HH/người</th>
+                                        <th>Thu nhập/người</th>
+                                        <th>Tổng nhóm</th>
+                                        <th>Trạng thái</th>
+                                   </tr>
+                              </thead>
+                              <tbody id="hostRows"></tbody>
+                         </table>
+                    </div>
+                    <p class="table-note">Các cột HH bậc 1–4 dùng mốc 200.000 / 500.000 / 1.000.000 KD. <strong>Chỉ mở
+                              hoa hồng khi ≥50.000 KD</strong> (khi mở, tính lũy tiến trên toàn bộ KD từ 0). Hoa hồng
+                         Host <strong>không yêu cầu đủ giờ</strong>; tình trạng “đạt chuẩn” chỉ quyết định việc có được
+                         Agency tính KD/thưởng quản lý hay không.</p>
+                    <div class="small-grid" style="margin-top:17px">
+                         <div class="small-box"><small>Tổng lương cứng Host</small><b id="totalFixedHost">0đ</b></div>
+                         <div class="small-box"><small>Tổng hoa hồng Host</small><b id="totalHostComm">0đ</b></div>
+                         <div class="small-box"><small>Tổng lương toàn đội Host</small><b id="totalHostPay">0đ</b></div>
+                         <div class="small-box"><small>Tổng GIFT toàn bộ phòng</small><b id="allGift">0 KD</b></div>
+                    </div>
+               </div>
+          </section>
+          <section class="panel fullpanel" id="policy">
+               <div class="panel-inner">
+                    <div class="panel-title">
+                         <div>
+                              <div class="micro">04 · Hằng số chính sách</div>
+                              <h2>Toàn bộ hằng số và công thức</h2>
+                              <p>Các thông số này được cố định trong bảng dành cho Agency, không có thanh điều chỉnh.
+                              </p>
+                         </div><span class="pill">20đ / KD KPI</span>
+                    </div>
+                    <div class="constgrid" style="margin:19px 0">
+                         <div class="constitem"><small>Giá quy đổi thưởng</small><strong>1 KD = 20đ</strong></div>
+                         <div class="constitem"><small>Lương Host S / giờ</small><strong class="gold">32.000đ</strong>
+                         </div>
+                         <div class="constitem"><small>Lương Host A / giờ</small><strong class="blue">26.000đ</strong>
+                         </div>
+                         <div class="constitem"><small>Giờ tối thiểu Host S</small><strong>80 giờ/tháng</strong></div>
+                         <div class="constitem"><small>Giờ tối thiểu Host A</small><strong>100 giờ/tháng</strong></div>
+                         <div class="constitem"><small>Thưởng Agency / Host chuẩn</small><strong>100.000đ/Host</strong>
+                         </div>
+                         <div class="constitem"><small>Mở hoa hồng Host</small><strong>50.000 KD</strong></div>
+                         <div class="constitem"><small>Mở hoa hồng Agency</small><strong>300.000 KD</strong></div>
+                         <div class="constitem"><small>KPI chuẩn Host S</small><strong>2.000 KD/giờ</strong></div>
+                         <div class="constitem"><small>KPI chuẩn Host A</small><strong>1.500 KD/giờ</strong></div>
+                    </div>
+                    <div class="cols">
+                         <div class="subsection">
+                              <h3>Bậc hoa hồng Host (lũy tiến)</h3>
+                              <div class="table-wrap">
+                                   <table class="table">
+                                        <thead>
+                                             <tr>
+                                                  <th>Khoảng KD/quà</th>
+                                                  <th>Hạng S</th>
+                                                  <th>Hạng A</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                             <tr>
+                                                  <td>50.000 – 200.000 KD</td>
+                                                  <td>10%</td>
+                                                  <td>8%</td>
+                                             </tr>
+                                             <tr>
+                                                  <td>Trên 200.000 – 500.000</td>
+                                                  <td>14%</td>
+                                                  <td>12%</td>
+                                             </tr>
+                                             <tr>
+                                                  <td>Trên 500.000 – 1.000.000</td>
+                                                  <td>18%</td>
+                                                  <td>16%</td>
+                                             </tr>
+                                             <tr>
+                                                  <td>Trên 1.000.000 KD</td>
+                                                  <td>20%</td>
+                                                  <td>18%</td>
+                                             </tr>
+                                        </tbody>
+                                   </table>
+                              </div>
+                              <p class="table-note"><strong>Dưới 50.000 KD: không có hoa hồng.</strong> Từ 50.000 KD:
+                                   kích hoạt hoa hồng trên <em>toàn bộ KD quà</em>, tỷ lệ tăng lũy tiến khi vượt các
+                                   bậc. KPI tối thiểu xét Host đạt chuẩn: S = 2.000 KD/giờ, A = 1.500 KD/giờ; KPI yêu
+                                   cầu = tổng giờ × KD/giờ.</p>
+                         </div>
+                         <div class="subsection">
+                              <h3>Hoa hồng và thưởng Agency</h3>
+                              <div class="table-wrap">
+                                   <table class="table">
+                                        <thead>
+                                             <tr>
+                                                  <th>Doanh số KD từ Host đạt chuẩn</th>
+                                                  <th>Tỷ lệ</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                             <tr>
+                                                  <td>300.000 – 1.800.000 KD</td>
+                                                  <td>3%</td>
+                                             </tr>
+                                             <tr>
+                                                  <td>Trên 1.800.000 – 4.000.000</td>
+                                                  <td>4%</td>
+                                             </tr>
+                                             <tr>
+                                                  <td>Trên 4.000.000 KD</td>
+                                                  <td>5%</td>
+                                             </tr>
+                                        </tbody>
+                                   </table>
+                              </div>
+                              <p class="table-note">Nếu GIFT tính Agency <strong>dưới 300.000 KD: hoa hồng nhóm bằng
+                                        0đ</strong>. Đạt mốc 300.000 KD sẽ mở hoa hồng lũy tiến trên toàn bộ KD nhóm đủ
+                                   chuẩn. <strong>Thưởng A = 100.000đ × số Host đạt chuẩn</strong>, trả từ Host đầu
+                                   tiên, không phụ thuộc việc mở hoa hồng doanh số.</p>
+                         </div>
+                    </div>
+                    <div class="hintblock"><strong>Công thức chính sách:</strong> (1) Lương cứng Host = giờ × đơn giá
+                         <em>nếu đủ giờ tối thiểu</em>, ngược lại 0đ. (2) Hoa hồng Host chỉ phụ thuộc GIFT ≥50.000 KD,
+                         <em>không phụ thuộc số giờ hay đạt KPI</em>. (3) Host đạt chuẩn = đủ giờ tối thiểu
+                         <strong>và</strong> KD đạt KPI giờ. (4) Hoa hồng Agency chỉ tính nếu tổng KD của các Host đạt
+                         chuẩn ≥300.000 KD; thưởng cố định Agency = 100.000đ × số Host đạt chuẩn (không có yêu cầu 3
+                         Host). (5) Mọi bậc trả lũy tiến theo KD × 20đ/KD. Không dùng giờ đặc biệt hay Follow Room trong
+                         mô phỏng.
+                    </div>
+               </div>
+          </section>
+          <footer class="footer">Dữ liệu chỉ được tính trên trình duyệt, không tải lên máy chủ và không cần kết nối
+               mạng. Mỗi nhóm Host được tính theo giả định tất cả thành viên làm cùng giờ và có cùng KD quà. Đây là
+               <strong>mô phỏng chính sách thưởng theo giả định của đơn vị vận hành</strong>; khi áp dụng trả công thực
+               tế, cần đối chiếu hợp đồng và quy định lao động hiện hành; quy tắc mô phỏng lương cứng bằng 0 khi thiếu
+               giờ chuẩn không thay thế nghĩa vụ trả tiền cho thời gian làm việc theo pháp luật nếu áp dụng. Hoa hồng
+               tính trên KPI nội bộ 20đ/KD, không phải tiền nạp thực tế của ứng dụng.
+          </footer>
+     </main>
+     <div id="toast" class="toast" role="status" aria-live="polite"></div>
+     <script>
+          (() => {
+               'use strict';
+               const KPI_VND = 20;
+               const RANKS = Object.freeze({ S: { hourly: 32000, minHours: 80, minKDHour: 2000, rates: [10, 14, 18, 20] }, A: { hourly: 26000, minHours: 100, minKDHour: 1500, rates: [8, 12, 16, 18] } });
+               const HOST_MIN_COMMISSION_KD = 50000;
+               const HOST_LIMITS = [200000, 500000, 1000000];
+               const AGENCY_MIN_COMMISSION_KD = 300000;
+               const AGENCY_LIMITS = [1800000, 4000000], AGENCY_RATES = [3, 4, 5];
+               const AGENCY_PER_HOST = 100000;
+               const MAX_HOSTS = 40; // số nhóm cấu hình tối đa; mỗi nhóm có tối đa 100 Host tương tự
+               const $ = id => document.getElementById(id);
+               const money = n => Math.round(n).toLocaleString('vi-VN') + 'đ';
+               const numeric = n => Math.round(n).toLocaleString('vi-VN');
+               const kd = n => numeric(n) + ' KD';
+               const sum = arr => arr.reduce((x, y) => x + y, 0);
+               const tiers = (gifts, limits, rates) => { let lower = 0; return rates.map((rate, i) => { let upper = i < limits.length ? limits[i] : Infinity; let units = Math.max(0, Math.min(gifts, upper) - lower); lower = upper; return { units, rate, amount: units * KPI_VND * rate / 100 }; }); };
+               let hostCounter = { S: 0, A: 0 }; let hosts = []; let snapshot = null;
+               function newHost(rank) { const i = ++hostCounter[rank]; return { id: rank + String(i).padStart(2, '0'), rank, count: 1, hours: RANKS[rank].minHours, gifts: rank === 'S' ? 250000 : 200000 }; }
+               function defaults() { hostCounter = { S: 0, A: 0 }; hosts = [newHost('A'), newHost('S')]; }
+               function computeHost(host) { let r = RANKS[host.rank]; let hoursOK = host.hours >= r.minHours; let target = host.hours * r.minKDHour; let kpiOK = host.gifts >= target; let qualified = hoursOK && kpiOK && host.count > 0; let salesOK = host.gifts >= HOST_MIN_COMMISSION_KD; let base = hoursOK ? host.hours * r.hourly : 0; let parts = salesOK ? tiers(host.gifts, HOST_LIMITS, r.rates) : r.rates.map(rate => ({ units: 0, rate, amount: 0 })); let commission = sum(parts.map(t => t.amount)); let total = base + commission; return { ...host, hoursOK, kpiOK, qualified, salesOK, target, base, parts, commission, total, groupBase: base * host.count, groupCommission: commission * host.count, groupTotal: total * host.count, groupGifts: host.gifts * host.count, qualifiedCount: qualified ? host.count : 0 }; }
+               function compute() { const items = hosts.map(computeHost); const qualified = items.filter(x => x.qualified); const totalHosts = sum(items.map(x => x.count)); const qualifiedCount = sum(qualified.map(x => x.count)); const agencyGifts = sum(qualified.map(x => x.groupGifts)); const agencySalesOK = agencyGifts >= AGENCY_MIN_COMMISSION_KD; const agencyParts = agencySalesOK ? tiers(agencyGifts, AGENCY_LIMITS, AGENCY_RATES) : AGENCY_RATES.map(rate => ({ units: 0, rate, amount: 0 })); const agencyCommission = sum(agencyParts.map(t => t.amount)); const agencyFixed = qualifiedCount * AGENCY_PER_HOST; return { items, qualified, totalHosts, qualifiedCount, agencyGifts, agencySalesOK, agencyParts, agencyCommission, agencyFixed, agencyTotal: agencyCommission + agencyFixed, hostBase: sum(items.map(x => x.groupBase)), hostCommission: sum(items.map(x => x.groupCommission)), hostTotal: sum(items.map(x => x.groupTotal)), allGifts: sum(items.map(x => x.groupGifts)), qualifiedS: sum(qualified.filter(x => x.rank === 'S').map(x => x.count)), qualifiedA: sum(qualified.filter(x => x.rank === 'A').map(x => x.count)) }; }
+               const put = (id, content) => { const el = $(id); if (el) el.textContent = content; };
+               function status(x) {
+                    if (x.qualified) return { type: 'ok', label: 'Đạt chuẩn', explain: 'Đủ giờ + KPI; được tính lương cứng, hoa hồng cá nhân và doanh số Agency.' };
+                    if (!x.hoursOK && x.salesOK) return { type: 'mid', label: 'Chưa đạt · Có hoa hồng', explain: 'Thiếu ' + numeric(RANKS[x.rank].minHours - x.hours) + ' giờ; không có lương cứng, vẫn được hoa hồng ' + money(x.commission) + '. Không tính vào KPI Agency.' };
+                    if (!x.hoursOK) return { type: 'no', label: 'Chưa đạt · Chưa có thu nhập', explain: 'Chưa đủ giờ, chưa đạt 50.000 KD để mở hoa hồng. Thiếu ' + numeric(RANKS[x.rank].minHours - x.hours) + ' giờ.' };
+                    if (x.salesOK) return { type: 'mid', label: 'Chưa đạt KPI · Vẫn có lương & hoa hồng', explain: 'Đã đủ giờ nhưng còn thiếu ' + kd(Math.max(0, x.target - x.gifts)) + ' để được tính là Host đạt chuẩn. Hoa hồng cá nhân vẫn trả theo quà.' };
+                    return { type: 'mid', label: 'Chưa đạt KPI · Có lương cứng', explain: 'Đủ giờ nên có lương; cần ít nhất 50.000 KD để nhận hoa hồng và thêm ' + kd(Math.max(0, x.target - x.gifts)) + ' để đạt chuẩn.' };
+               }
+               function hostCard(h) { const r = RANKS[h.rank]; return `<article class="host-card ${h.rank.toLowerCase()}" data-host-id="${h.id}"><div class="host-top"><div class="host-title"><span class="rank-badge ${h.rank.toLowerCase()}">${h.rank}</span><span><strong>Host hạng ${h.rank} · ${h.id}</strong><small>${money(r.hourly)}/giờ · tối thiểu ${r.minHours} giờ · ${numeric(r.minKDHour)} KD/giờ</small></span></div><button class="btn danger" type="button" data-delete="${h.id}" aria-label="Xóa Host ${h.id}" title="Xóa Host này">✕</button></div><div class="sliders"><div class="slider-control host-quantity"><div class="ctrl-label"><label for="count-${h.id}">Số Host tương tự</label><div class="valuebox"><input type="number" data-host-number="${h.id}" data-kind="count" min="1" max="100" step="1" inputmode="numeric" value="${h.count}" aria-label="Số Host tương tự nhóm ${h.id}"><span>Host</span></div></div><input type="range" class="rangeslider" id="count-${h.id}" data-host-slider="${h.id}" data-kind="count" min="1" max="100" step="1" value="${h.count}" aria-label="Điều chỉnh số Host tương tự nhóm ${h.id}"><div class="range-ends"><span>1 Host</span><span>100 Host</span></div><p class="host-quantity-note">${h.count} người có cùng số giờ và KD/người bên dưới.</p></div><div class="slider-control"><div class="ctrl-label"><label for="hours-${h.id}">Số giờ làm trong tháng</label><div class="valuebox"><input type="number" data-host-number="${h.id}" data-kind="hours" min="0" max="240" step="1" inputmode="numeric" value="${h.hours}" aria-label="Giờ làm ${h.id}"><span>giờ</span></div></div><input type="range" class="rangeslider" id="hours-${h.id}" data-host-slider="${h.id}" data-kind="hours" min="0" max="240" step="1" value="${h.hours}" aria-label="Điều chỉnh giờ làm ${h.id}"><div class="range-ends"><span>0 giờ</span><span>240 giờ</span></div></div><div class="slider-control"><div class="ctrl-label"><label for="gifts-${h.id}">KD GIFT kiếm trong phòng</label><div class="valuebox"><input style="width:107px" type="number" data-host-number="${h.id}" data-kind="gifts" min="0" max="3000000" step="1000" inputmode="numeric" value="${h.gifts}" aria-label="Kim Diệp quà ${h.id}"><span>KD</span></div></div><input type="range" class="rangeslider" id="gifts-${h.id}" data-host-slider="${h.id}" data-kind="gifts" min="0" max="3000000" step="5000" value="${h.gifts}" aria-label="Điều chỉnh Kim Diệp của ${h.id}"><div class="range-ends"><span>0 KD</span><span>3.000.000 KD</span></div></div></div><div class="host-status"><div class="flag" data-flag="${h.id}"></div><div class="detail" data-explain="${h.id}"></div></div><div class="host-costs"><span>Thu nhập cả nhóm / tháng</span><strong data-payout="${h.id}">0đ</strong></div></article>`; }
+               function updateRange(range) { if (!range) return; let min = Number(range.min), max = Number(range.max); let pct = max > min ? (Number(range.value) - min) / (max - min) * 100 : 0; range.style.setProperty('--fill', Math.max(0, Math.min(100, pct)) + '%'); }
+               function renderHostList() { put('hostCountLabel', sum(hosts.map(h => h.count)) + ' Host · ' + hosts.length + ' nhóm'); $('addS').disabled = hosts.length >= MAX_HOSTS; $('addA').disabled = hosts.length >= MAX_HOSTS; $('hostList').innerHTML = hosts.length ? hosts.map(hostCard).join('') : '<div class="emptyhosts"><strong>Chưa có Host</strong>Dùng hai nút phía trên để thêm Host hạng S hoặc A.</div>'; document.querySelectorAll('[data-host-slider]').forEach(updateRange); refresh(); }
+               function updateCard(x) { const hostEl = document.querySelector(`[data-host-id="${x.id}"]`); if (!hostEl) return; let st = status(x), flag = hostEl.querySelector('[data-flag]'); flag.className = 'flag ' + st.type; flag.textContent = (st.type === 'ok' ? '✓ ' : st.type === 'no' ? '✕ ' : '! ') + st.label; hostEl.querySelector('[data-explain]').textContent = st.explain; hostEl.querySelector('[data-payout]').textContent = money(x.groupTotal); const p = hostEl.querySelector('.host-quantity-note'); if (p) p.textContent = `${numeric(x.count)} người cùng hiệu suất · ${money(x.total)}/người/tháng`; }
+               function renderPayroll(c) { let html = c.items.map(x => { let st = status(x); let badge = `<span class="mini-badge ${x.rank.toLowerCase()}">${x.rank}</span>`; let parts = x.parts.map(t => `<td class="${t.amount === 0 ? 'zero' : ''}">${money(t.amount)}</td>`).join(''); return `<tr><td><strong>Nhóm ${x.id}</strong></td><td>${badge}</td><td>${numeric(x.count)}</td><td>${numeric(x.hours)}h</td><td>${numeric(x.gifts)}</td><td>${numeric(x.groupGifts)}</td><td>${numeric(x.target)}</td><td>${money(x.base)}</td>${parts}<td>${money(x.commission)}</td><td>${money(x.total)}</td><td class="paycell">${money(x.groupTotal)}</td><td class="flagcell ${st.type}">${st.label}</td></tr>`; }).join(''); if (!html) html = '<tr><td colspan="16" style="text-align:center;padding:27px;color:#a0abc3">Chưa có Host. Hãy thêm nhóm Host S hoặc A.</td></tr>'; else html += `<tr class="totalrow"><td colspan="5">TỔNG NHÓM · ${c.totalHosts} Host (${c.qualifiedCount} đủ chuẩn)</td><td>${numeric(c.allGifts)}</td><td>—</td><td>${money(c.hostBase)}</td><td colspan="4">—</td><td>${money(c.hostCommission)}</td><td>—</td><td class="paycell">${money(c.hostTotal)}</td><td> </td></tr>`; $('hostRows').innerHTML = html; }
+               function refresh() {
+                    const c = compute(); snapshot = c; for (const x of c.items) updateCard(x);
+                    put('topAgency', money(c.agencyTotal)); put('topComm', money(c.agencyCommission)); put('topFixed', money(c.agencyFixed)); put('topEligible', c.qualifiedCount + ' / ' + c.totalHosts);
+                    put('agencyTotal', money(c.agencyTotal)); put('agencyCommission', money(c.agencyCommission)); put('agencyFixed', money(c.agencyFixed)); for (let i = 0; i < 3; i++)put('agTier' + i, money(c.agencyParts[i].amount)); put('hostCountLabel', numeric(c.totalHosts) + ' Host · ' + c.items.length + ' nhóm'); put('agencyAllGift', kd(c.allGifts)); put('qualifiedKD', kd(c.agencyGifts)); put('agencyKPI', money(c.agencyGifts * KPI_VND)); put('eligibleS', c.qualifiedS); put('eligibleA', c.qualifiedA);
+                    put('payrollTotal', money(c.hostTotal) + ' toàn nhóm'); put('totalFixedHost', money(c.hostBase)); put('totalHostComm', money(c.hostCommission)); put('totalHostPay', money(c.hostTotal)); put('allGift', kd(c.allGifts));
+                    const remaining = Math.max(0, AGENCY_MIN_COMMISSION_KD - c.agencyGifts);
+                    let next;
+                    if (!c.qualifiedCount) next = '<b>Chưa có Host đạt chuẩn.</b> Cần đủ giờ + KPI theo hạng để Agency được cộng KD nhóm. Host chưa đạt vẫn có thể nhận hoa hồng cá nhân.';
+                    else if (!c.agencySalesOK) next = `<b>Thưởng quản lý: ${money(c.agencyFixed)}.</b> Cần thêm ${kd(remaining)} từ Host đạt chuẩn để mở hoa hồng Agency (mốc 300.000 KD).`;
+                    else next = `<b>Đã mở hoa hồng Agency.</b> Đang tính trên ${kd(c.agencyGifts)} từ ${c.qualifiedCount} Host đạt chuẩn, cộng ${money(c.agencyFixed)} thưởng quản lý.`;
+                    $('nextStep').innerHTML = next;
+                    let threshold, target, label;
+                    if (c.agencyGifts < AGENCY_MIN_COMMISSION_KD) { threshold = 0; target = AGENCY_MIN_COMMISSION_KD; label = 'Còn ' + kd(target - c.agencyGifts) + ' để mở hoa hồng Agency 3%'; }
+                    else if (c.agencyGifts < AGENCY_LIMITS[0]) { threshold = AGENCY_MIN_COMMISSION_KD; target = AGENCY_LIMITS[0]; label = 'Đã mở hoa hồng 3%; còn ' + kd(target - c.agencyGifts) + ' để lên phần vượt bậc 4%'; }
+                    else if (c.agencyGifts < AGENCY_LIMITS[1]) { threshold = AGENCY_LIMITS[0]; target = AGENCY_LIMITS[1]; label = 'Còn ' + kd(target - c.agencyGifts) + ' để lên phần vượt bậc 5%'; }
+                    else { threshold = AGENCY_LIMITS[1]; target = AGENCY_LIMITS[1]; label = 'Đã đến dải hoa hồng 5% cho phần vượt 4.000.000 KD'; }
+                    let percent = target === threshold ? 100 : Math.max(0, Math.min(100, (c.agencyGifts - threshold) / (target - threshold) * 100)); $('progressFill').style.width = percent + '%'; put('thresholdNote', label); renderPayroll(c);
+               }
+               function addHost(rank) { if (hosts.length >= MAX_HOSTS) { notify('Tối đa ' + MAX_HOSTS + ' Host trong một kịch bản.'); return; } hosts.push(newHost(rank)); renderHostList(); document.querySelector(`[data-host-id="${hosts[hosts.length - 1].id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+               function assignValue(input, mode) { const id = mode === 'slider' ? input.dataset.hostSlider : input.dataset.hostNumber; const kind = input.dataset.kind; const h = hosts.find(x => x.id === id); if (!h) return; if (mode === 'number' && input.value === '') return; let max = kind === 'count' ? 100 : kind === 'hours' ? 240 : 3000000; let value = Number(input.value); if (!Number.isFinite(value)) return; value = Math.max(kind === 'count' ? 1 : 0, Math.min(max, Math.round(value))); h[kind] = value; const card = input.closest('.host-card'); if (!card) return; const slider = card.querySelector(`[data-host-slider="${id}"][data-kind="${kind}"]`); const number = card.querySelector(`[data-host-number="${id}"][data-kind="${kind}"]`); if (slider) { slider.value = value; updateRange(slider) } if (number && number !== input) number.value = value; refresh(); }
+               $('hostList').addEventListener('input', e => { if (e.target.matches('[data-host-slider]')) assignValue(e.target, 'slider'); else if (e.target.matches('[data-host-number]')) assignValue(e.target, 'number'); });
+               $('hostList').addEventListener('change', e => { if (!e.target.matches('[data-host-number]')) return; const el = e.target; const id = el.dataset.hostNumber, h = hosts.find(x => x.id === id); if (!h) return; if (el.value === '') { el.value = el.dataset.kind === 'count' ? '1' : '0'; assignValue(el, 'number') } else el.value = h[el.dataset.kind]; });
+               $('hostList').addEventListener('click', e => { const del = e.target.closest('[data-delete]'); if (!del) return; hosts = hosts.filter(x => x.id !== del.dataset.delete); renderHostList(); });
+               $('addS').addEventListener('click', () => addHost('S')); $('addA').addEventListener('click', () => addHost('A'));
+               function reset() { defaults(); renderHostList(); notify('Đã khôi phục 1 Host A và 1 Host S (2 nhóm).'); } $('resetBtn')?.addEventListener('click', reset);
+               function csvEscape(v) { let s = typeof v === 'number' ? String(Math.round(v * 100) / 100) : String(v); return '"' + s.replaceAll('"', '""') + '"'; }
+               function csvRows() {
+                    const c = snapshot; const rows = [
+                         ['MOTCHAP AGENCY - BANG LUONG HOST S/A '], ['Gia KPI (VND/KD)', KPI_VND],
+                         ['Host S - luong/gio', RANKS.S.hourly], ['Host S - gio toi thieu', RANKS.S.minHours], ['Host S - KPI KD/gio', RANKS.S.minKDHour], ['Host S - hoa hong', RANKS.S.rates.join('/') + '%'],
+                         ['Host A - luong/gio', RANKS.A.hourly], ['Host A - gio toi thieu', RANKS.A.minHours], ['Host A - KPI KD/gio', RANKS.A.minKDHour], ['Host A - hoa hong', RANKS.A.rates.join('/') + '%'],
+                         ['Mo hoa hong Host (KD)', HOST_MIN_COMMISSION_KD], ['Moc luy tien Host (KD)', HOST_LIMITS.join(' / ')],
+                         ['Mo hoa hong Agency (KD)', AGENCY_MIN_COMMISSION_KD], ['Moc luy tien Agency (KD)', AGENCY_LIMITS.join(' / ')], ['Ty le Agency', AGENCY_RATES.join('/') + '%'],
+                         ['Thuong A / Host dat chuan', AGENCY_PER_HOST], [],
+                         ['BANG LUONG HOST'], ['Nhom Host', 'Hang', 'So Host tuong tu', 'Gio / nguoi', 'KD / nguoi', 'KD ca nhom', 'KPI yeu cau / nguoi', 'Du gio', 'Du 50000 KD', 'Dat KPI KD/gio', 'Nhom Host dat chuan', 'Luong cung / nguoi', 'HH bac 1 / nguoi', 'HH bac 2 / nguoi', 'HH bac 3 / nguoi', 'HH bac 4 / nguoi', 'Tong HH / nguoi', 'Tong thu nhap / nguoi', 'Luong cung ca nhom', 'HH ca nhom', 'Tong thu nhap ca nhom']
+                    ];
+                    for (const h of c.items) rows.push([h.id, h.rank, h.count, h.hours, h.gifts, h.groupGifts, h.target, h.hoursOK ? 'Co' : 'Khong', h.salesOK ? 'Co' : 'Khong', h.kpiOK ? 'Co' : 'Khong', h.qualified ? 'Co' : 'Khong', h.base, ...h.parts.map(t => t.amount), h.commission, h.total, h.groupBase, h.groupCommission, h.groupTotal]);
+                    rows.push(['TONG NHOM', '', '' + c.totalHosts, '', '', '' + c.allGifts, '', '', '', '', '', '', '', '', '', '', '', '', c.hostBase, c.hostCommission, c.hostTotal]);
+                    rows.push([], ['AGENCY'], ['Host dat chuan', c.qualifiedCount], ['Host S dat chuan', c.qualifiedS], ['Host A dat chuan', c.qualifiedA], ['Tong GIFT tat ca Host', c.allGifts], ['GIFT tinh cho Agency', c.agencyGifts], ['Doanh so KPI nhom (VND)', c.agencyGifts * KPI_VND], ['Da mo hoa hong Agency', c.agencySalesOK ? 'Co' : 'Khong'],
+                         ['Hoa hong Agency 3%', c.agencyParts[0].amount], ['Hoa hong Agency 4%', c.agencyParts[1].amount], ['Hoa hong Agency 5%', c.agencyParts[2].amount], ['Tong hoa hong Agency', c.agencyCommission], ['Thuong 100000 VND/Host dat chuan', c.agencyFixed], ['TONG TIEN AGENCY', c.agencyTotal], [],
+                         ['GHI CHU', 'Luong cung: du gio toi thieu. Hoa hong Host: tu 50000 KD bat ke gio/KPI. Dat chuan: du gio va KD/gio. Agency: 100000 VND moi Host chuan; hoa hong nhom chi khi >=300000 KD Host chuan. Khi mo HH, tinh luy tien tu KD dau tien. Chi la mo phong, khong phai phieu luong phap ly.']); return rows;
+               }
+               function downloadFile(text, filename, contentType) { const blob = new Blob([text], { type: contentType }); const href = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = href; link.download = filename; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(href), 1000); }
+               $('exportBtn')?.addEventListener('click', () => { downloadFile('\ufeff' + csvRows().map(row => row.map(csvEscape).join(';')).join('\r\n'), 'motchap_agency_host_S_A_.csv', 'text/csv;charset=utf-8'); notify('Đã xuất bảng lương Host và Agency ra CSV.'); });
+               function summaryText() {
+                    const c = snapshot; let s = [
+                         'MOTCHAP - MO PHONG THU NHAP AGENCY ()', 'Giá KPI: 1 KD = 20đ', 'Mở hoa hồng Host: 50.000 KD; mở hoa hồng Agency: 300.000 KD',
+                         `Tổng Host: ${c.totalHosts} (${c.items.length} nhóm); đạt chuẩn: ${c.qualifiedCount} (S: ${c.qualifiedS}, A: ${c.qualifiedA})`,
+                         `GIFT toàn đội: ${kd(c.allGifts)}`, `KD tính hoa hồng Agency: ${kd(c.agencyGifts)}`,
+                         `Hoa hồng Agency: ${money(c.agencyCommission)}`, `Thưởng 100.000đ/Host đạt chuẩn: ${money(c.agencyFixed)}`, `TỔNG AGENCY: ${money(c.agencyTotal)}`, '', 'BẢNG LƯƠNG HOST'
+                    ]; for (const h of c.items) s.push(`${h.id} (${h.rank}) × ${h.count} Host: ${h.hours} giờ/người; ${kd(h.gifts)}/người; ${h.qualified ? 'đạt chuẩn' : 'chưa đạt'}; lương ${money(h.base)}/người; hoa hồng ${money(h.commission)}/người; tổng ${money(h.groupTotal)}/nhóm`); s.push('TỔNG NHÓM HOST: ' + money(c.hostTotal)); return s.join('\n');
+               }
+               function fallbackCopy(text) { const area = document.createElement('textarea'); area.value = text; area.style.cssText = 'position:fixed;opacity:0;top:0;left:0'; document.body.appendChild(area); area.select(); const ok = document.execCommand('copy'); area.remove(); notify(ok ? 'Đã sao chép tóm tắt.' : 'Trình duyệt không hỗ trợ sao chép; bạn có thể dùng Xuất CSV.'); }
+               $('copyBtn')?.addEventListener('click', () => { let t = summaryText(); if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(() => notify('Đã sao chép tóm tắt.'), () => fallbackCopy(t)); } else fallbackCopy(t); });
+               $('printBtn')?.addEventListener('click', () => window.print());
+               let toastTimeout; function notify(msg) { let el = $('toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(toastTimeout); toastTimeout = setTimeout(() => el.classList.remove('show'), 2700); }
+               // Chỉ dùng để kiểm thử cục bộ; dữ liệu không được gửi tới server.
+               Object.defineProperty(window, 'motchapAgencyTest', { value: Object.freeze({ snapshot: () => JSON.parse(JSON.stringify(snapshot)), hosts: () => JSON.parse(JSON.stringify(hosts)), add: rank => addHost(rank), update: (id, field, value) => { let h = hosts.find(x => x.id === id); if (!h || !['count', 'hours', 'gifts'].includes(field)) return; h[field] = Math.max(field === 'count' ? 1 : 0, Math.min(field === 'count' ? 100 : field === 'hours' ? 240 : 3000000, Math.round(Number(value) || 0))); let card = document.querySelector(`[data-host-id="${id}"]`); if (card) { let number = card.querySelector(`[data-host-number="${id}"][data-kind="${field}"]`); if (number) number.value = h[field]; let slider = card.querySelector(`[data-host-slider="${id}"][data-kind="${field}"]`); if (slider) { slider.value = h[field]; updateRange(slider); } } refresh(); }, reset }) });
+               defaults(); renderHostList();
+          })();
+     </script>
+</body>
+
+</html>
